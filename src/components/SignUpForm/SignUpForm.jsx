@@ -23,6 +23,7 @@ export default class SignUpForm extends Component {
     try {
       // We don't want to send the 'error' or 'confirm' property,
       //  so let's make a copy of the state object, then delete them
+      console.log("test");
       const formData = {...this.state};
       delete formData.error;
       delete formData.confirm;
