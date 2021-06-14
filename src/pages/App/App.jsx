@@ -3,8 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import './App.css';
 import AuthPage from '../AuthPage/AuthPage';
-import NewOrderPage from '../NewOrderPage/NewOrderPage';
-import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+import IndexPage from '../IndexPage/IndexPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -15,13 +14,9 @@ export default function App() {
         <>
           {/* <NavBar user={user} setUser={setUser} /> */}
           <Switch>
-            <Route path="/orders/new">
-              <NewOrderPage user={user} setUser={setUser} />
+            <Route path="/">
+              <IndexPage user={user} setUser={setUser}/>
             </Route>
-            <Route path="/orders">
-              <OrderHistoryPage />
-            </Route>
-            <Redirect to="/orders" />
           </Switch>
         </>
         :
