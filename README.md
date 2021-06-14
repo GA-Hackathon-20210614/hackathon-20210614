@@ -13,3 +13,12 @@ npm i
 ```zsh
 npm start
 ```
+
+```zsh
+touch .env
+```
+
+```env
+DATABASE_URL=mongodb+srv://InternetPolice:qWeRt12345@sei.wahub.mongodb.net/football-head?retryWrites=true&w=majority
+SECRET=SEIRocks!!!
+```
