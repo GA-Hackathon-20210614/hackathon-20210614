@@ -3,7 +3,7 @@
 ## Getting Started
 
 ```zsh
-git clone git@github.com:BlueCadet-3/hackathon-20210614.git
+git@github.com:GA-Hackathon-20210614/hackathon-20210614.git
 ```
 
 ```zsh
