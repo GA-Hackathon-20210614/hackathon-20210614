@@ -7,7 +7,7 @@ import IndexPage from '../IndexPage/IndexPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
-
+  console.log(user)
   return (
     <main className="App">
       { user ?
