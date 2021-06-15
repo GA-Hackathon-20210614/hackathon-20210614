@@ -28,7 +28,8 @@ const classSchema = mongoose.Schema({
         type: Number,
         required: true,
         min: 1
-    }
+    },
+    description: String
 }, {
     timestamps: true
 })

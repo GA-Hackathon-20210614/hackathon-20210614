@@ -6,7 +6,6 @@ const bcrypt = require('bcrypt');
 const SALT_ROUNDS = 6;  // 6 is a reasonable value
 
 const userSchema = new Schema({
-  name: {type: String, required: true},
   email: {
     type: String,
     unique: true,
