@@ -20,10 +20,15 @@ const studentSchema = new Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Class'
+        },
+        {
+            //Possibly teacher's note for class
+            type: String
         }
       ],
     default: []
     },
+    //Possibly remove to have it under the class instead
     assignments: {
         type: [
           {
@@ -32,7 +37,15 @@ const studentSchema = new Schema({
           }
         ],
       default: []
-      }
+      },
+    parent: {
+        
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parent',
+        
+        required: true
+
+    }
 
 }, {
   timestamps: true,
