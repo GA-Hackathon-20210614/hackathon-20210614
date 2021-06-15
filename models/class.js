@@ -83,6 +83,7 @@ classSchema.method('putAssign', function(assignmentId){
 })
 
 classSchema.method('deleteAssign', function(assignmentId){
+    this.assignments.find()
     return 'Assignment delete touched';
 })
 module.exports = mongoose.model('Class', classSchema)

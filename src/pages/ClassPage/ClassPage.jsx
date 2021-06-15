@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './ClassPage.scss'
+import ClassCard from '../../components/ClassCard/ClassCard'
 
 export default function ClassPage({ user }) {
     const [students, setStudents] = useState([])
@@ -18,6 +19,8 @@ export default function ClassPage({ user }) {
     return(
         <div>
             List of Students
+            { ClassCard }
+            { studentList }
         </div>
     )
 }
