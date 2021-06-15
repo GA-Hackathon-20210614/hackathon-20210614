@@ -8,6 +8,7 @@ module.exports = {
   checkToken,
   findAll,
   findOne,
+  edit,
 };
 
 function checkToken(req, res) {
@@ -48,7 +49,7 @@ async function findOne(req, res) {
   const _id = req.params.id
   try {
     // show one user - we are using id for params?
-    const user = await User.findOne({_id}).select('-password');
+    const user = await User.findOne({_id});
     console.log(user)
 
     if(!user.isTeacher) throw new Error("User is not a teacher")
@@ -70,13 +71,80 @@ async function findOne(req, res) {
   }
 }
 
+// Route to edit a User
+async function edit(req, res) {
+  const _id = req.params.id;
+  try {
+    // find the current user
+    const currentUser = req.user;
+    console.log(currentUser)
+    // check if the user is editing only themselves
+    if (currentUser._id !== _id) throw new Error("Forbidden");
 
+    const { email, oldPassword, newPassword, first_name, last_name } = req.body;
+
+    const user = await User.findOne({ _id });
+
+    // if user submitted an oldPassword and newPassword
+    if (oldPassword && newPassword) {
+      // compare old password
+      const isValid = await bcrypt.compare(oldPassword, user.password);
+      if (!isValid) throw new Error("Old Password Inccorect");
+
+      const isOldPassword = await bcrypt.compare(newPassword, user.password);
+      if (isOldPassword) throw new Error("New Password Cannot Be Old Password");
+
+      // Salt and hash the password.
+      bcrypt.genSalt(8, (error, salt) => {
+        if (error) throw new Error("Salt Generation Failed");
+
+        bcrypt.hash(newPassword, salt, async (error, hash) => {
+          if (error) throw new Error("Hash Password Failure");
+
+          // We can now save that new password.
+          user.password = hash;
+          await user.save();
+        }); 
+      });
+    };
+
+    user.email = email;
+    user.first_name = first_name;
+    user.last_name = last_name;
+
+    // Save the user and the changes.
+    await user.save();
+
+    res.json({ success: true, message: "User Edit Successful." });
+  } catch (error) {
+    console.error(error);
+    if (error.message === "Forbidden") {
+      res.status(403).json({
+        success: false,
+        message: "You Must Be logged In As That User To Do That",
+      });
+    } else if (error.name === 'MongoError') {
+      const needToChange = error.keyPattern;
+      res.status(409).json({
+        success: false,
+        message: "DataBase Error",
+        needToChange
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+}
 
 async function login(req, res) {
+  const { email, password } = req.body;
   try {
-    const user = await User.findOne({ email: req.body.email });
+    const user = await User.findOne({ email });
     if (!user) throw new Error();
-    await bcrypt.compare(req.body.password, user.password);
+    await bcrypt.compare(password, user.password);
     const token = createJWT(user);
     res.json(token);
   } catch {
