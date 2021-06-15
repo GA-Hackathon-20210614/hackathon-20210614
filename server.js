@@ -25,7 +25,7 @@ app.use(require('./config/checkToken'));
 // Put API routes here, before the "catch all" route
 app.use('/api/assignments', require('./routes/api/assignments'));
 // app.use('/api/attendance', require('./routes/api/attendance'));
-// app.use('/api/classes', require('./routes/api/classes'));
+app.use('/api/classes', require('./routes/api/classes'));
 app.use('/api/students', require('./routes/api/students'));
 app.use('/api/users', require('./routes/api/users'));
 
