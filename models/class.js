@@ -71,7 +71,18 @@ const classSchema = new Schema({
     timestamps: true
 })
 
+//pass in Object for add
+classSchema.method('addAssign', function(assignmentId){
+    return 'Assignment add touched';
+})
+
+//pass in Object
+classSchema.method('putAssign', function(assignmentId){
+    //this.
+    return 'Assignment update touched';
+})
+
 classSchema.method('deleteAssign', function(assignmentId){
-    return 'Got assignment deleted';
+    return 'Assignment delete touched';
 })
 module.exports = mongoose.model('Class', classSchema)
