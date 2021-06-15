@@ -8,9 +8,11 @@ router.post('/create', attendanceCtrl.create);
 router.get('/index', attendanceCtrl.index);
 
 router.get('/today', attendanceCtrl.getDate);
+
 // UPDATE attendance
-// router.put('/attendance/:id', attendanceCtrl.update);
-// // DELETE attendance
-// router.delete('/attendance/:id', attendanceCtrl.delete);
+router.put('/:id', attendanceCtrl.update);
+
+// DELETE attendance
+router.delete('/:id', attendanceCtrl.remove);
 
 module.exports = router;
