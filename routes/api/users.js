@@ -22,4 +22,7 @@ router.post('/', usersCtrl.create);
 // POST /api/users/login
 router.post('/login', usersCtrl.login);
 
+// DELETE /api/users/:userId/delete
+router.delete('/:id/delete', ensureLoggedIn, usersCtrl.remove);
+
 module.exports = router;
