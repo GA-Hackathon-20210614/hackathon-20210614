@@ -8,7 +8,7 @@ module.exports = {
 async function index (req, res) {
     try {
         const theClass = await Class.findOne({ _id: req.params.id });
-        
+
         if (req.user.isTeacher) {
             res.status(200).json({ class: theClass });
         } else {
@@ -18,6 +18,6 @@ async function index (req, res) {
             res.status(200).json({ class: theClass });
         }
     } catch (error) {
-        res.json({ data: error })
+        res.json({ data: error });
     }
 }
