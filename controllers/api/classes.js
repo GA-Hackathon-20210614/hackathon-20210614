@@ -140,10 +140,10 @@ async function remove(req, res) {
 }
 
 async function deleteAssignment(req ,res){
-  const _id = req.params.id;
+  const _id = req.params.class_id;
   const targetClass = await Class.findOne({ _id });
-  targetClass.deleteAssignment(1);
-  res.json(200)
+  
+  res.json(targetClass.deleteAssign(req.params.assignment_id));
   
 }
 // Route to get a specific assignment;
