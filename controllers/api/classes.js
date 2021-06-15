@@ -138,5 +138,9 @@ async function remove(req, res) {
 }
 
 async function deleteAssignment(req ,res){
+  const _id = req.params.id;
+  const targetClass = await Class.findOne({ _id });
+  targetClass.deleteAssignment(1);
+  res.json(200)
   
 }
