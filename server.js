@@ -26,7 +26,7 @@ app.use(require('./config/checkToken'));
 app.use('/api/assignments', require('./routes/api/assignments'));
 // app.use('/api/attendance', require('./routes/api/attendance'));
 // app.use('/api/classes', require('./routes/api/classes'));
-// app.use('/api/student', require('./routes/api/student'));
+app.use('/api/students', require('./routes/api/students'));
 app.use('/api/users', require('./routes/api/users'));
 
 // Protect the api routes below from anonymous users

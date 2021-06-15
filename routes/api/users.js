@@ -5,7 +5,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 // GET /api/users/all
 // showing for testing purposes
-router.get('/all', usersCtrl.findAll)
+router.get('/index', usersCtrl.index)
 
 // GET /api/users/:userId
 router.get('/:id', usersCtrl.findOne)
