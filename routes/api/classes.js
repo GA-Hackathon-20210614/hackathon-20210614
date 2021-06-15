@@ -12,6 +12,9 @@ router.post('/create', ensureLoggedIn, classesCtrl.create);
 // // UPDATE classes 
 router.put('/:id/edit', ensureLoggedIn, classesCtrl.edit);
 
+// ADD ASSIGNMENT to class
+router.post('/:id/addAssignment', ensureLoggedIn, classesCtrl.addAssignment)
+
 // DELETE classes
 router.delete('/:id/delete', ensureLoggedIn, classesCtrl.remove);
 

@@ -9,7 +9,20 @@ module.exports = {
 
 async function create(req, res) {
 	try {
-		console.log("assignment create req.body: ", req.body);
+		const currentUser = req.user; // grabbing current user
+		const { title, content, dueDate, isCompleted, isLate } = req.body;
+
+		if(!currentUser.isTeacher) throw new Error("You cannot create a class!");
+
+		const assignment = await Assignments.create({
+			title,
+			content,
+			dueDate,
+			isCompleted, 
+			isLate
+		});
+
+		res.json({ success: true, message: "Assignment created", assignment });
 	} catch (err) {
 		res.status(400).json(err);
 	}
@@ -17,11 +30,14 @@ async function create(req, res) {
 
 async function index(req, res) {
 	try {
-		console.log("assignment index req.body: ", req.body);
-	} catch (err) {
-		res.status(400).json(err);
+	  // show index of all assignments for testing
+	  const assignments = await Assignments.find({});
+  
+	  res.json({ sucess: true, assignments });
+	} catch {
+	  res.status(400).json("Couldn`t retrieve assignments");
 	}
-}
+  }
 
 async function update(req, res) {
 	try {
