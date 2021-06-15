@@ -4,15 +4,31 @@ const Schema = mongoose.Schema;
 const studentSchema = new Schema({
   first_name: {type: String, required: true},
   last_name: {type: String, required: true},
+  parent: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true
+  },
+  teachers: [
+      {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'User',
+      }
+  ],
   classes: {
       type: [
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Class'
+        },
+        {
+            //Possibly teacher's note for class
+            type: String
         }
       ],
     default: []
     },
+    //Possibly remove to have it under the class instead
     assignments: {
         type: [
           {
@@ -21,7 +37,15 @@ const studentSchema = new Schema({
           }
         ],
       default: []
-      }
+      },
+    parent: {
+        
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parent',
+        
+        required: true
+
+    }
 
 }, {
   timestamps: true,

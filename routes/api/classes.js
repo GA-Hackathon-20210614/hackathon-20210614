@@ -1,14 +1,18 @@
 const express = require('express');
 const router = express.Router();
 const classesCtrl = require('../../controllers/api/classes');
+const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
-// CREATE assignments
-router.post('/classes', classesCtrl.create);
-// READ all assignments
-router.get('/classes', classesCtrl.index);
-// UPDATE assignment
-router.put('/classes/:id', classesCtrl.update);
-// DELETE assignments
-router.delete('/classes/:id', classesCtrl.delete);
+// /api/classes/...
+// READ all classes
+router.get('/index', classesCtrl.index);
+
+// // CREATE classes
+router.post('/create', ensureLoggedIn, classesCtrl.create);
+// // UPDATE classes 
+router.put('/:id/edit', ensureLoggedIn, classesCtrl.edit);
+
+// DELETE classes
+router.delete('/:id/delete', ensureLoggedIn, classesCtrl.remove);
 
 module.exports = router;
