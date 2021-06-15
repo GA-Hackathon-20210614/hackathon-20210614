@@ -3,10 +3,12 @@ import { signUp } from '../../utilities/users-service';
 
 export default class SignUpForm extends Component {
   state = {
-    name: '',
     email: '',
     password: '',
     confirm: '',
+    first_name: '',
+    last_name: '',
+    isTeacher: false,
     error: ''
   };
 
@@ -16,6 +18,15 @@ export default class SignUpForm extends Component {
       error: ''
     });
   };
+
+  handleRadio = (evt) => {
+    const acctAssign = evt.target.value === "true" ? true:false
+    this.setState({
+      isTeacher: acctAssign,
+      error: ''
+    });
+  };
+
 
   handleSubmit = async (evt) => {
     // Prevent form from being submitted to the server
@@ -42,14 +53,29 @@ export default class SignUpForm extends Component {
       <div>
         <div className="form-container">
           <form autoComplete="off" onSubmit={this.handleSubmit}>
-            <label>Name</label>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required />
             <label>Email</label>
             <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
             <label>Password</label>
             <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
             <label>Confirm</label>
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} required />
+
+            <label>First Name</label>
+            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleChange} required />
+            <label>Last Name</label>
+            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleChange} required />
+            <strong>Are you a teacher?</strong>
+            <br />
+            <label>
+              <input type="radio" name="isTeacher" value="true" onChange={this.handleRadio} checked={this.state.isTeacher === true} required  />
+              Yes
+            </label>
+            <label>
+              <input type="radio" name="isTeacher" value="false" onChange={this.handleRadio} checked={this.state.isTeacher === false} required />
+              No
+            </label>
+
+
             <button type="submit" disabled={disable}>SIGN UP</button>
           </form>
         </div>
