@@ -37,7 +37,8 @@ async function create(req, res) {
 async function index(req, res) {
   try {
     // show index of all users for testing
-    const users = await User.find({}).select('-password');
+    // const users = await User.find({}).select('-password'); // hide password durring prod
+    const users = await User.find({});
 
     res.json({ sucess: true, users});
 
