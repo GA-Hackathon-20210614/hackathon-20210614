@@ -1,0 +1,196 @@
+body {
+    color: $brand-black;
+	font: 300 20px/30px $font-codec;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: $brand-gray05;
+}
+
+h1, 
+h2, 
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+	display: block;
+	margin: 0 0 $gutter-sm;
+
+	@include breakpoint($width-xs) {
+		margin: 0 0 $gutter-xs;
+	}
+
+	&.margin--none {
+		margin-bottom: 0;
+	}
+}
+
+
+h1,
+.h1 {
+	font: bold 60px/72px $font-codec;
+
+	@include breakpoint($width-sm) {
+		font: bold 36px/48px $font-codec;
+	}
+
+	&.drop {
+		text-shadow: -4px 4px 0px rgba(0, 0, 0, 0.05);
+	}
+}
+
+h2,
+.h2 {
+	font: bold 48px/54px $font-codec;
+
+	@include breakpoint($width-sm) {
+		font: bold 28px/36px $font-codec;
+	}
+}
+
+h3,
+.h3 {
+	font: bold 36px/48px $font-codec;
+
+	@include breakpoint($width-sm) {
+		font: bold 28px/36px $font-codec;
+	}
+}
+
+h4,
+.h4 {
+	font: bold 28px/36px $font-codec;
+
+	@include breakpoint($width-sm) {
+		font: bold 18px/24px $font-codec;
+	}
+}
+
+h5,
+.h5 {
+	font: bold 18px/24px $font-codec;
+	margin: 0;
+}
+
+i {
+	color: $brand-gray03;
+}
+
+a {
+	color: $link-default;
+	cursor: pointer;
+	font-weight: bold;
+	text-decoration: none;
+	transition: 300ms;
+
+	&:hover {
+		color: $link-hover;
+		transition: 300ms;
+	}
+}
+
+a,
+span {
+	&.icon-arrow,
+	&.icon-arrow-inline {
+		font: 700 20px/20px $font-codec;
+		padding: 0;
+
+		@include breakpoint($width-sm) {
+			font: 700 16px/16px $font-codec;
+		}
+
+		&:hover {
+			color: $link-hover;
+		}
+
+		&::after {
+			content: '\f061';
+			display: inline-block;
+			font: 700 16px/0 "Font Awesome\ 5 Free";
+			margin-left: $gutter-xs;
+		    position: relative;
+
+		    @include breakpoint($width-sm) {
+				font: 700 14px/0 "Font Awesome\ 5 Free";
+				margin-left: $gutter-xxs;
+			}
+		}
+	}
+
+	&.icon-arrow {
+		display: block;
+	}
+
+	&.icon-arrow-inline {
+		display: inline-block;
+		margin-left: $gutter-xs;
+	}
+}
+
+ul.align-bullets {
+	list-style-position: inside;
+}
+
+label,
+.label {
+	display: block;
+	font: 300 16px/26px $font-codec;
+	letter-spacing: 0.2em;
+	margin-bottom: $gutter-sm;
+	text-transform: uppercase;
+
+	&.heading-large,
+	&.heading-small {
+		letter-spacing: 0;
+		text-transform: none;
+	}
+
+	&.heading-large {
+		color: $brand-black;
+		font: bold 28px/36px $font-codec;
+	}
+
+	&.heading-small {
+		color: $brand-gray01;
+		font: 20px/30px $font-codec;
+	}
+
+	&.hide-label {
+		font-size: 0;
+		line-height: 0;
+		margin: 0;
+		opacity: 0;
+		padding: 0;
+		visibility: hidden;
+	}
+}
+
+textarea {
+	resize: none;
+}
+
+code {
+	color: $brand-gray03;
+	font: 15px source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.caption {
+	font: 300 14px/12px $font-codec;
+}
+
+.capitalize {
+    text-transform: capitalize;
+}
+
+.align--center {
+	text-align: center;
+}
+
+.align--right {
+	text-align: right;
+}
+

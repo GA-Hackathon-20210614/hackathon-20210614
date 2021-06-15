@@ -1,0 +1,66 @@
+@mixin icon {
+	content: '';
+	display: inline-block;
+	font: 700 16px/0 "Font Awesome\ 5 Free";
+	position: relative;	
+	transition: 300ms;
+}
+
+.icon:not(.button) {
+	&::after {
+		@include icon;
+	}
+
+	&.icon-angle-down::after {
+		content: '\f107';
+	}
+
+	&.icon-angle-left::after {
+		content: '\f104';
+	}
+
+	&.icon-angle-right::after {
+		content: '\f105';
+	}
+
+	&.icon-angle-up::after {
+		content: '\f106';
+	}
+
+	&.icon-arrow::after {
+		content: '\f061';
+	}
+
+	&.icon-chevron-down::after {
+		content: '\f078';
+	}
+
+	&.icon-chevron-left::after {
+		content: '\f053';
+	}
+
+	&.icon-chevron-right::after {
+		content: '\f054';
+	}
+
+	&.icon-chevron-up::after {
+		content: '\f077';
+	}
+
+	&.icon-heart::after {
+		content: '\f004';
+	}
+
+	&.icon-minus::after {
+		content: '\f068';
+	}
+
+	&.icon-plus::after {
+		content: '\f067';
+	}
+
+	&.icon-sort::after {
+		content: '\f0dc';
+	}
+}
+
