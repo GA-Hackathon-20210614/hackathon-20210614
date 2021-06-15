@@ -9,6 +9,6 @@ router.get('/assignments', assignmentsCtrl.index);
 // UPDATE assignment
 router.put('/assignments/:id', assignmentsCtrl.update);
 // DELETE assignments
-router.delete('/assignments/:id', assignmentsCtrl.deleteAssignment);
+router.delete('/assignments/:id', assignmentsCtrl.delete);
 
 module.exports = router;
