@@ -1,4 +1,5 @@
 import React from 'react';
+import "material-ui-sass";
 
 function SideBar(props) {
     return (
