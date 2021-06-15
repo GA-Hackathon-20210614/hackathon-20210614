@@ -9,6 +9,8 @@ module.exports = {
   edit,
   remove,
   index,
+  addAssignment,
+  getAssignment
 };
 
 async function index(req, res) {
@@ -135,3 +137,70 @@ async function remove(req, res) {
     }
   }
 }
+
+// Route to get a specific assignment;
+async function getAssignment(req, res) {
+  const { assignment_id } = req.params;
+  try {
+    console.log('hit')
+    const targetClass = await Class.find({ 'assignments._id': `${assignment_id}` }, {'assignments.$': 1});
+    console.log('fire')
+    console.log(targetClass)
+    res.json({success: true, targetClass})
+
+  } catch (error) {
+    console.error(error)
+    res.status(400).json({
+      success: false,
+      message: error.message,
+    })
+  }
+}
+
+// Route to add an assignment to class;
+async function addAssignment(req, res) {
+    const _id = req.params.id;
+    try {
+      // find the current user
+      const currentUser = req.user;
+  
+      const { title, content, dueDate } = req.body;
+  
+      const targetClass = await Class.findOne({ _id });
+  
+      // check if the teacher owns the class
+      if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
+      
+      targetClass.assignments.push({
+          title,
+          content,
+          dueDate
+      })
+
+      // Save the user and the changes.
+      await targetClass.save();
+  
+      res.json({ success: true, message: "Added Assignment.", targetClass });
+    } catch (error) {
+      console.error(error);
+      if (error.message === "Forbidden") {
+        res.status(403).json({
+          success: false,
+          message: "You do not own this class",
+        });
+      } else if (error.name === "MongoError") {
+        const needToChange = error.keyPattern;
+        res.status(409).json({
+          success: false,
+          message: "DataBase Error",
+          needToChange,
+        });
+      } else {
+        res.status(400).json({
+          success: false,
+          message: error.message,
+        });
+      }
+    }
+}
+
