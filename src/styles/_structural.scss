@@ -1,0 +1,215 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+body,
+.body {
+    min-height: 100vh;
+
+    &.overlay {
+        height: 100%;
+        margin: 0;
+        overflow: hidden !important;
+
+        &::before {
+            background: $brand-gray05;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: 0.5;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5 {
+    display: block;
+    margin: 0 0 $gutter-sm;
+
+    @include breakpoint($width-xs) {
+        margin: 0 0 $gutter-xs;
+    }
+
+    &.margin--none {
+        margin-bottom: 0;
+    }
+}
+
+h1,
+.h1 {
+    font: bold 60px/72px $font-codec;
+
+    @include breakpoint($width-sm) {
+        font: bold 36px/48px $font-codec;
+    }
+
+    &.drop {
+        text-shadow: -4px 4px 0px rgba(0, 0, 0, 0.05);
+    }
+}
+
+h2,
+.h2 {
+    font: bold 48px/54px $font-codec;
+
+    @include breakpoint($width-sm) {
+        font: bold 28px/36px $font-codec;
+    }
+}
+
+h3,
+.h3 {
+    font: bold 36px/48px $font-codec;
+
+    @include breakpoint($width-sm) {
+        font: bold 28px/36px $font-codec;
+    }
+}
+
+h4,
+.h4 {
+    font: bold 28px/36px $font-codec;
+
+    @include breakpoint($width-sm) {
+        font: bold 18px/24px $font-codec;
+    }
+}
+
+h5,
+.h5 {
+    font: bold 18px/24px $font-codec;
+    margin: 0;
+}
+
+i {
+    color: $brand-gray01;
+}
+
+a {
+    color: $link-default;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 300ms;
+
+    &:hover {
+        color: $link-hover;
+        transition: 300ms;
+    }
+}
+
+a,
+span {
+    &.icon-arrow,
+    &.icon-arrow-inline {
+        font: 700 20px/20px $font-codec;
+        padding: 0;
+
+        @include breakpoint($width-sm) {
+            font: 700 16px/16px $font-codec;
+        }
+
+        &:hover {
+            color: $link-hover;
+        }
+
+        &::after {
+            content: "\f061";
+            display: inline-block;
+            font: 700 16px/0 "Font Awesome\ 5 Free";
+            margin-left: $gutter-xs;
+            position: relative;
+
+            @include breakpoint($width-sm) {
+                font: 700 14px/0 "Font Awesome\ 5 Free";
+                margin-left: $gutter-xxs;
+            }
+        }
+    }
+
+    &.icon-arrow {
+        display: block;
+    }
+
+    &.icon-arrow-inline {
+        display: inline-block;
+        margin-left: $gutter-xs;
+    }
+}
+
+ul.align-bullets {
+    list-style-position: inside;
+}
+
+button {
+    background: $dark-orange;
+    color: $color-white;
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    font: inherit;
+    outline: inherit;
+    padding: 0 0.5em;
+}
+
+textarea {
+    resize: none;
+}
+
+input {
+    padding: 1vmin;
+    font-size: 2vmin;
+    border: 0.1vmin solid $brand-gray03;
+    border-radius: 0.5vmin;
+    color: $color-black;
+    background-image: none !important; /* prevent lastpass */
+    outline: none;
+}
+
+input:focus {
+    border-color: $dark-orange;
+}
+
+.align-ctr {
+    text-align: center;
+}
+
+.align-rt {
+    text-align: right;
+}
+
+.smaller {
+    font-size: smaller;
+}
+
+.flex-ctr-ctr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.flex-j-end {
+    justify-content: flex-end;
+}
+
+.scroll-y {
+    overflow-y: scroll;
+}
