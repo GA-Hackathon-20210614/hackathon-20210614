@@ -10,6 +10,10 @@ const studentSchema = new Schema({
         {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Class'
+        },
+        {
+            //Possibly teacher's note for class
+            type: String
         }
       ],
     default: []

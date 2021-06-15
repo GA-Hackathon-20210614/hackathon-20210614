@@ -1,0 +1,98 @@
+@import url("https://use.fontawesome.com/releases/v5.6.3/css/all.css");
+
+@font-face {
+	font-family: 'Archivo';
+  	src: url("../assets/fonts/Archivo-Regular.ttf");
+}
+
+@font-face {
+	font-family: 'Archivo';
+  	src: url("../assets/fonts/Archivo-Bold.ttf");
+  	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'Archivo';
+  	src: url("../assets/fonts/Archivo-Italic.ttf");
+  	font-style: italic;
+}
+
+@font-face {
+	font-family: 'CrimsonText';
+  	src: url("../assets/fonts/CrimsonText-Regular.ttf");
+}
+
+@font-face {
+	font-family: 'CrimsonText';
+  	src: url("../assets/fonts/CrimsonText-Bold.ttf");
+  	font-weight: 700;
+}
+
+@font-face {
+	font-family: 'CrimsonText';
+  	src: url("../assets/fonts/CrimsonText-Italic.ttf");
+  	font-style: italic;
+}
+
+@font-face {
+	font-family: 'Oswald';
+  	src: url("../assets/fonts/Oswald-Regular.ttf");
+}
+
+@font-face {
+	font-family: 'Oswald';
+  	src: url("../assets/fonts/Oswald-Bold.ttf");
+  	font-weight: 700;
+}
+
+$font-codec: 'Archivo', sans-serif;
+$font-crimson: 'CrimsonText', sans-serif;
+$font-oswald: 'Oswald', sans-serif;
+
+$color-black: #000000;
+$color-white: #ffffff;
+
+$dark-blue: #2ec4b6;
+$light-blue: #cbf3f0;
+$dark-orange: #ff9f1c;
+$light-orange: #ffbf69;
+
+$brand-black: #111;
+$brand-red: #F72E2E;
+$brand-gray01: #676968;
+$brand-gray03: #939393;
+$brand-gray04: #c2c2c2;
+$brand-gray05: #F4F4F4;
+
+$link-default: $dark-orange;
+$link-hover: $light-blue;
+$link-danger: $brand-red;
+
+$gutter-xxxl: 120px;
+$gutter-xxl: 80px;
+$gutter-xl: 64px;
+$gutter-lg: 40px;
+$gutter-md: 32px;
+$gutter-sm: 24px;
+$gutter-xs: 16px;
+$gutter-xxs: 8px;
+$gutter-xxxs: 4px;
+
+
+$vertical-gutter-sections-desktop: $gutter-xl;
+$vertical-gutter-sections-mobile: $gutter-md;
+
+$form-gutter: $gutter-xl;
+
+$siteheader-height: $gutter-xxl;
+
+$max-width-xl: 1440px;
+$max-width: 1080px;
+$max-width-md: 850px;
+$max-width-sm: 600px;
+
+$width-xs: 580px;
+$width-sm: 768px;
+$width-md: 1230px;
+$width-lg: 1440px;
+
