@@ -1,10 +1,13 @@
 const Class = require("../../models/class");
 const Student = require("../../models/student");
+const User = require("../../models/user");
+const bcrypt = require("bcrypt");
 // javascript does not allow a variable called "class" ***
 
 module.exports = {
   create,
   edit,
+  remove,
   index,
 };
 
@@ -75,6 +78,54 @@ async function edit(req, res) {
         success: false,
         message: "DataBase Error",
         needToChange,
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+}
+
+// Route to Delete a Class
+async function remove(req, res) {
+  // id of class to delete
+  const _id = req.params.id;
+
+  try {
+    const currentUser = req.user;
+    console.log(currentUser)
+
+    const targetClass = await Class.findOne({ _id });
+    if (!targetClass) throw new Error("Class does not exist");
+
+    // check if the teacher owns the class
+    if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
+    // targeting teacher to check password
+    const teacher = await User.findOne({ _id: currentUser._id });
+
+    const { passwordConfirmation } = req.body;
+    const isValid = await bcrypt.compare(
+
+      passwordConfirmation, teacher.password
+    );
+
+    if (!isValid) throw new Error("Incorrect Password");
+
+    // then delete from db
+    await targetClass.delete();
+
+    res.status(200).json({
+      success: true,
+      message: "Class Deleted",
+    });
+  } catch (error) {
+    console.error(error);
+    if (error.message === "Forbidden") {
+      res.status(403).json({
+        success: false,
+        message: "You don't own this class!",
       });
     } else {
       res.status(400).json({

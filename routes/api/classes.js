@@ -12,7 +12,7 @@ router.post('/create', ensureLoggedIn, classesCtrl.create);
 // // UPDATE classes 
 router.put('/:id/edit', ensureLoggedIn, classesCtrl.edit);
 
-// // DELETE classes
-// router.delete('/:id/delete', classesCtrl.delete);
+// DELETE classes
+router.delete('/:id/delete', ensureLoggedIn, classesCtrl.remove);
 
 module.exports = router;
