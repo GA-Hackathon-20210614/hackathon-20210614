@@ -12,7 +12,6 @@
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^5.11.11",
         "morgan": "^1.10.0",
-        "node-sass": "^6.0.0",
         "react": "^17.0.1",
         "react-dom": "^17.0.1",
         "react-router-dom": "^5.2.0",
