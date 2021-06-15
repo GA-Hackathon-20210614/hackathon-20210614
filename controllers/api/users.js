@@ -37,7 +37,7 @@ async function findAll(req, res) {
     // show index of all users for testing
     const users = await User.find({}).select('-password');
 
-    res.json({ success: true, users});
+    res.json({ sucess: true, users})
 
   } catch {
     res.status(400).json('Couldn`t find users');
@@ -48,12 +48,25 @@ async function findOne(req, res) {
   const _id = req.params.id
   try {
     // show one user - we are using id for params?
-    const user = await User.find({_id}).select('-password');
-    
+    const user = await User.findOne({_id}).select('-password');
+    console.log(user)
+
+    if(!user.isTeacher) throw new Error("User is not a teacher")
     res.json({ success: true, user});
 
-  } catch {
-    res.status(400).json('Couldn`t find user');
+  } catch (error) {
+      console.error(error);
+      if (error.message === "User is not a teacher") {
+        res.status(400).json({
+          success: false,
+          message: error.message,
+        });
+      } else {
+        res.status(400).json({
+          success: false,
+          message: "User not found",
+        });
+      }
   }
 }
 
