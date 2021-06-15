@@ -142,9 +142,8 @@ async function remove(req, res) {
 async function getAssignment(req, res) {
   const { assignment_id } = req.params;
   try {
-    console.log('hit')
+    
     const targetClass = await Class.find({ 'assignments._id': `${assignment_id}` }, {'assignments.$': 1});
-    console.log('fire')
     console.log(targetClass)
     res.json({success: true, targetClass})
 
