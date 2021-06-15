@@ -3,11 +3,13 @@ const Schema = mongoose.Schema;
 
 const assignmentSchema = new Schema({
 	student: {
-		type: Object,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Student',
 		required: true
 	},
 	class: {
-		type: Object,
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'Class',
 		required: true
 	},
 	title: {
@@ -15,10 +17,12 @@ const assignmentSchema = new Schema({
 		required: true
 	},
 	content: {
-		type: String
+		type: String,
+		required: true
 	},
 	dueDate: {
-		type: Date
+		type: Date,
+		required: true
 	},
 	isCompleted: {
 		type: Boolean,

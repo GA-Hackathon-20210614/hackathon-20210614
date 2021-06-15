@@ -23,15 +23,18 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 
 // Put API routes here, before the "catch all" route
+app.use('/api/assignments', require('./routes/api/assignments'));
+app.use('/api/attendances', require('./routes/api/attendances'));
+app.use('/api/classes', require('./routes/api/classes'));
+app.use('/api/students', require('./routes/api/students'));
 app.use('/api/users', require('./routes/api/users'));
 
 // Protect the api routes below from anonymous users
 const ensureLoggedIn = require('./config/ensureLoggedIn');
 
-
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.get('/*', function(req, res) {
+app.get('/*', function (req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
