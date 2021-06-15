@@ -4,6 +4,7 @@ module.exports = {
     create,
     index,
     getDate,
+    update,
 };
 
 async function create(req, res) {
@@ -45,8 +46,6 @@ async function getDate(req, res) {
     }
 }
 
-// async function update(req, res) {
-//     try {
-        
-//     }
-// }
+async function update(req, res) {
+    console.log("bloop")
+}
