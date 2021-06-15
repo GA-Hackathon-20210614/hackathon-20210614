@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const studentSchema = new Schema({
   first_name: {type: String, required: true},
   last_name: {type: String, required: true},
+  //have teacher add students to the class
   classes: {
       type: [
         {
@@ -13,6 +14,7 @@ const studentSchema = new Schema({
       ],
     default: []
     },
+    //Possibly remove to have it under the class instead
     assignments: {
         type: [
           {
@@ -21,7 +23,15 @@ const studentSchema = new Schema({
           }
         ],
       default: []
-      }
+      },
+    parent: {
+        
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Parent',
+        
+        required: true
+
+    }
 
 }, {
   timestamps: true,
