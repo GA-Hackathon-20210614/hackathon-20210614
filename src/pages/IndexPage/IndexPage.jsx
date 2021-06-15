@@ -1,6 +1,7 @@
 import * as userService from "../../utilities/users-service";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import SideBar from '../SideBar/SideBar';
 
 export default function IndexPage({ user, setUser }) {
   const [student, setStudent] = useState({
@@ -22,6 +23,7 @@ export default function IndexPage({ user, setUser }) {
       <Link to="" onClick={handleLogOut}>
         Click to log out
       </Link>
+      <SideBar />
       <h1> Hello World</h1>
       <h4> kek </h4>
       <h5> yer name is: {user.first_name}, {user.last_name} </h5>
