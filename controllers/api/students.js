@@ -9,6 +9,7 @@ module.exports = {
 	deleteStudent,
 	findOne,
 };
+
 async function create(req, res) {
 	try {
 		const currentUser = req.user; // grabbing current user
@@ -53,12 +54,10 @@ async function update(req, res) {
 			{
 				first_name,
 				last_name,
-				parent: currentUser,
 				teachers: [],
 				classes: [],
 				assignments: [],
 		});
-
 		res.json({ success: true, student })
 	} catch (err) {
 		res.status(400).json(err);
@@ -68,7 +67,6 @@ async function update(req, res) {
 //make accessible to only teachers
 async function deleteStudent(req, res) {
 	try{
-
 		const student = await Student.findByIdAndDelete(
 			req.params.id,
 			function(err){
