@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './DashboardPage.scss'
+import * as classApi from '../../utilities/classes-api'
 
 export default function DashboardPage ({ user }) {
 
@@ -9,7 +10,9 @@ export default function DashboardPage ({ user }) {
     // If teacher is logged in, show their classes
     async function getClasses () {
         try {
-            console.log('nothing')
+            const allClasses = await classApi.getAll()
+            const teachersClasses = allClasses.classes.filter(thisClass => user._id === thisClass.teacher)
+            setClasses(teachersClasses)
         } catch (error) {
             console.log(error)
         }
@@ -17,7 +20,7 @@ export default function DashboardPage ({ user }) {
 
     // If parent is logged in, show their students
     function getStudents () {
-
+        // nothing yet
     }
 
     useEffect(() => {
@@ -29,6 +32,6 @@ export default function DashboardPage ({ user }) {
     }, [])
 
     return (
-        <div id="dashboard-container">Teacher: {user.isTeacher ? 'true' : 'false'}</div>
+        <div id="dashboard-container">Class count: {classes.length}</div>
     )
 }
