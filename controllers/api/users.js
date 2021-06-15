@@ -6,7 +6,7 @@ module.exports = {
   create,
   login,
   checkToken,
-  findAll,
+  index,
   findOne,
   edit,
   remove,
@@ -34,12 +34,12 @@ async function create(req, res) {
   }
 }
 
-async function findAll(req, res) {
+async function index(req, res) {
   try {
     // show index of all users for testing
     const users = await User.find({}).select('-password');
 
-    res.json({ sucess: true, users})
+    res.json({ success: true, users})
 
   } catch {
     res.status(400).json('Couldn`t find users');
@@ -147,7 +147,7 @@ async function login(req, res) {
     if (!user) throw new Error();
     const isValid = await bcrypt.compare(password, user.password);
     if (!isValid) throw new Error("Bad Credentials");
-    
+
     const token = createJWT(user);
     res.json(token);
   } catch {
