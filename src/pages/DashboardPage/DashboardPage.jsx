@@ -1,18 +1,45 @@
 import React, { useState, useEffect } from 'react'
 import './DashboardPage.scss'
 import * as classApi from '../../utilities/classes-api'
+import Button from '@material-ui/core/Button';
+import ClassFeed from '../../components/ClassFeed/ClassFeed'
 
 export default function DashboardPage ({ user }) {
 
     const [classes, setClasses] = useState([])
     const [students, setStudents] = useState([])
 
+    const mockClasses = [
+        {
+            subject: 'Math',
+            period: 2,
+            students: [1,2,3,4,5],
+            _id: 495847594
+        },
+        {
+            subject: 'English',
+            period: 3,
+            students: [1,2,3,4,5,6,7,8],
+            _id: 495847563
+        }
+
+    ]
+
     // If teacher is logged in, show their classes
     async function getClasses () {
         try {
             const allClasses = await classApi.getAll()
             const teachersClasses = allClasses.classes.filter(thisClass => user._id === thisClass.teacher)
-            setClasses(teachersClasses)
+            setClasses([...teachersClasses, ...mockClasses])
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    // Add a class if teacher
+    async function addClass (data) {
+        try {
+            await classApi.create(data);
         } catch (error) {
             console.log(error)
         }
@@ -32,6 +59,9 @@ export default function DashboardPage ({ user }) {
     }, [])
 
     return (
-        <div id="dashboard-container">Class count: {classes.length}</div>
+        <div id="dashboard-container">
+            <div id="mock-sidebar"></div>
+            <ClassFeed classes={classes} />
+        </div>
     )
 }
