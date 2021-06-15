@@ -8,11 +8,11 @@ function SideBar(props) {
     return (
         <div>
             <img></img>
-            <h1>sign in user name</h1>
+            <h1>User</h1>
             
             <Button variant="contaned" color="primary"><img src={DashboardPic} /> Dashboard</Button>
             <Button variant="contaned" color="secondary"><img src={AssignmentPic} /> Gradebook</Button>
-            <h3>Settings</h3>
+            <h6>Settings</h6>
             <button>Main Settings</button>
         </div>
     );
