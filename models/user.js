@@ -19,6 +19,23 @@ const userSchema = new Schema({
     trim: true,
     minLength: 3,
     required: true
+  },
+  first_name: {
+    type: String,
+    trim: true,
+    minLength: 3,
+    required: true
+  },
+  last_name: {
+    type: String,
+    trim: true,
+    minLength: 3,
+    required: true
+  },
+  isTeacher: {
+    type: Boolean,
+    default: false,
+    required: true
   }
 }, {
   timestamps: true,
