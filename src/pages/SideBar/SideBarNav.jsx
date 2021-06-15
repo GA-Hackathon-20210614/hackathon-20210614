@@ -10,15 +10,17 @@ import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import DashboardIcon from '@material-ui/icons/Dashboard';
+import AssignmentIcon from '@material-ui/icons/Assignment';
+import SettingsIcon from '@material-ui/icons/Settings';
 
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
+// import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({ 
   root: {
     display: 'flex',
   },
@@ -59,16 +61,18 @@ export default function SideBarNav() {
         className={classes.drawer}
         variant="permanent"
         classes={{
-          paper: classes.drawerPaper,
+            paper: classes.drawerPaper,
         }}
         anchor="left"
-      >
+        >
         <div className={classes.toolbar} />
+        
+          <h1> Hi, Teacher/Parent! </h1>
         <Divider />
         <List>
-        {['Dashboard', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+        {['Dashboard' , 'Gradebook' ].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <DashboardIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <DashboardIcon style={{ color: 'orange' }} /> : <AssignmentIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
@@ -77,7 +81,7 @@ export default function SideBarNav() {
         <List>
           {['Main Settings'].map((text, index) => (
             <ListItem button key={text}>
-               <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+               <ListItemIcon>{index % 2 === 0 ? <SettingsIcon /> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
