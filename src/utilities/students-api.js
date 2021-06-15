@@ -19,5 +19,5 @@ export function deleteOne(id) {
 }
 
 export function create(studentData) {
-    return sendRequest(BASE_URL, 'POST', studentData)
+    return sendRequest(BASE_URL, 'POST', studentData);
 }

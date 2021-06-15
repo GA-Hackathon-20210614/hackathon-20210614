@@ -1,3 +1,14 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  --primary-dark: #ff9f1c;
+  --primary-light: #ffbf69;
+  --secondary-dark: #2ec4b6;
+  --secondary-light: #cbf3f0;
+  --main-bg: #e5e5e5;
+}
+
 .App {
   height: 100%;
 }
