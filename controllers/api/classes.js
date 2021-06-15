@@ -9,6 +9,7 @@ module.exports = {
   edit,
   remove,
   index,
+  deleteAssignment
 };
 
 async function index(req, res) {
@@ -134,4 +135,8 @@ async function remove(req, res) {
       });
     }
   }
+}
+
+async function deleteAssignment(req ,res){
+  
 }

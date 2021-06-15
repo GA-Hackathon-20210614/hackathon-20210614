@@ -71,4 +71,7 @@ const classSchema = new Schema({
     timestamps: true
 })
 
+classSchema.method('deleteAssignment', function(assignmentId){
+    console.log(subject);
+})
 module.exports = mongoose.model('Class', classSchema)
