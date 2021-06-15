@@ -10,7 +10,6 @@ function SideBar(props) {
             <button>Gradebook</button>
             <h3>Settings</h3>
             <button>Main Settings</button>
-
         </div>
     );
 }
