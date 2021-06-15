@@ -14,11 +14,6 @@ const attendanceSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    grade: {
-        type: Number,
-        required: true,
-        min: 1
-    },
     class: {
         type: Number,
         required: true,
