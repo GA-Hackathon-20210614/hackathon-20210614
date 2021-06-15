@@ -1,11 +1,10 @@
 const Class = require('../../models/class');
 
-
 module.exports = {
     index
 }
 
-async function index (req, res) {
+async function index(req, res) {
     try {
         const theClass = await Class.findOne({ _id: req.params.id });
 
@@ -17,7 +16,7 @@ async function index (req, res) {
             });
             res.status(200).json({ class: theClass });
         }
-    } catch (error) {
-        res.json({ data: error });
+    } catch (err) {
+        res.status(400).json(err);
     }
 }
