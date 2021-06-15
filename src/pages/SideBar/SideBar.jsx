@@ -13,8 +13,8 @@ function SideBar(props) {
             
             <Button variant="contained"><img src={DashboardIcon} /> Dashboard</Button>
             <Button variant="contained"><img src={AssignmentIcon} /> Gradebook</Button>
-            <Button variant="contained"><img src={SettingsIcon} /> Settings</Button>
-            <button>Main Settings</button>
+            <button>Settings</button>
+            <Button variant="contained"><img src={SettingsIcon} /> Main Settings</Button>
         </div>
     );
 }
