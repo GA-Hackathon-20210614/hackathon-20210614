@@ -13,6 +13,9 @@ router.get('/:id', usersCtrl.findOne)
 // GET /api/users/check-token
 router.get('/check-token', ensureLoggedIn, usersCtrl.checkToken);
 
+// PUT /api/users/:id/edit 
+router.put("/:id/edit", ensureLoggedIn, usersCtrl.edit);
+
 // POST /api/users
 router.post('/', usersCtrl.create);
 
