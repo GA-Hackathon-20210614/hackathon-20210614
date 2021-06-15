@@ -17,6 +17,6 @@ router.get('/:id', ensureLoggedIn, studentsCtrl.findOne);
 // UPDATE student
 // router.put('/students/:id', studentsCtrl.update);
 // DELETE students
-// router.delete('/students/:id', studentsCtrl.delete);
+router.delete('/students/:id', studentsCtrl.delete);
 
 module.exports = router;

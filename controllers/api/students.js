@@ -53,7 +53,6 @@ async function update(req, res) {
 			{
 				first_name,
 				last_name,
-				parent: currentUser,
 				teachers: [],
 				classes: [],
 				assignments: [],
@@ -73,10 +72,10 @@ async function deleteStudent(req, res) {
 			req.params.id,
 			function(err){
 				if(err){
-					console.log('Deletion failed',err);
+					res.json('Deletion failed',err);
 				}
 				else {
-					console.log('Deleted');
+					res.json('Deleted');
 				}
 			});
 
