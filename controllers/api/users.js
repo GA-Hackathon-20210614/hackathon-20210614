@@ -9,6 +9,7 @@ module.exports = {
   findAll,
   findOne,
   edit,
+  remove,
 };
 
 function checkToken(req, res) {
@@ -77,7 +78,7 @@ async function edit(req, res) {
   try {
     // find the current user
     const currentUser = req.user;
-    console.log(currentUser)
+
     // check if the user is editing only themselves
     if (currentUser._id !== _id) throw new Error("Forbidden");
 
@@ -144,13 +145,58 @@ async function login(req, res) {
   try {
     const user = await User.findOne({ email });
     if (!user) throw new Error();
-    await bcrypt.compare(password, user.password);
+    const isValid = await bcrypt.compare(password, user.password);
+    if (!isValid) throw new Error("Bad Credentials");
+    
     const token = createJWT(user);
     res.json(token);
   } catch {
     res.status(400).json('Bad Credentials');
   }
 }
+
+// Route to Delete a User
+async function remove(req, res) {
+  // id of user to delete
+  const _id = req.params.id;
+
+  try {
+
+    const currentUser = req.user;
+
+    // check if the user is deleting only themselves
+    if (currentUser._id !== _id) throw new Error("Forbidden");
+
+    const user = await User.findOne({ _id });
+
+    const { passwordConfirmation } = req.body
+    const isValid = await bcrypt.compare(passwordConfirmation, user.password);
+
+    if (!isValid) throw new Error("Incorrect Password");
+    
+    // then delete from db
+    await user.delete();
+
+    res.status(200).json({
+      success: true,
+      message: "User Deleted",
+    });
+
+  } catch (error) {
+    console.error(error);
+    if (error.message === "Forbidden") {
+      res.status(403).json({
+        success: false,
+        message: "You Must Be logged In As That User To Do That",
+      });
+    } else {
+      res.status(400).json({
+        success: false,
+        message: error.message,
+      });
+    }
+  }
+};
 
 /*-- Helper Functions --*/
 
