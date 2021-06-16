@@ -96,7 +96,8 @@ async function findOne(req, res) {
 			res.json({ student, parent});
 		} else if (!currentUser.isTeacher && currentUser._id == student.parent) { // checking if this is the requesters child 
 			const classes = await Classes.find({ students: student._id }); // we might have to do this to get the name of classes
-			res.json({ student, classes});
+			const parent =  await User.findOne({_id: student.parent });
+			res.json({ student, classes, parent});
 		} else {
 			res.json({ success: false, message: "Authorization error"});
 		};

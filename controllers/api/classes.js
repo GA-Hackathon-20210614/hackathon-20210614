@@ -11,7 +11,7 @@ module.exports = {
   remove,
   index,
   addAssignment,
-  getAssignment
+  getAssignment,
 };
 
 async function index(req, res) {
@@ -170,6 +170,7 @@ async function getAssignment(req, res) {
     })
   }
 }
+
 
 // Route to add an assignment to class;
 async function addAssignment(req, res) {
