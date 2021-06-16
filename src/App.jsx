@@ -12,22 +12,28 @@ export default function App() {
   console.log(user)
   return (
     <main className="App">
-      { user ?
         <>
           {/* <NavBar user={user} setUser={setUser} /> */}
           <Switch>
             <Route exact path="/">
             <LandingPage />
             </Route>
-            <Route exact path="/dashboard">
-              <DashboardPage user={user} />
+            { user ?
+            <>
+              <Route exact path="/dashboard">
+                <DashboardPage user={user} />
+              </Route>
+              <Redirect to='/dashboard'/>
+              </>
+              :
+              <AuthPage setUser={setUser} />
+            }
+            <Route exact path="/login">
+              <AuthPage setUser={setUser} />
             </Route>
             <Redirect to='/'/>
           </Switch> 
         </>
-        :
-        <AuthPage setUser={setUser} />
-      }
     </main>
   );
 }
