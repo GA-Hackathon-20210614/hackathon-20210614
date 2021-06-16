@@ -10,6 +10,7 @@ module.exports = {
   findClass,
   remove,
   index,
+  deleteAssignment,
   addAssignment,
   getAssignment,
 };
@@ -155,11 +156,21 @@ async function remove(req, res) {
   }
 }
 
+async function deleteAssignment(req ,res){
+  const _id = req.params.class_id;
+  const targetClass = await Class.findOne({ _id });
+  
+  res.json(targetClass.deleteAssign(req.params.assignment_id));
+  
+}
 // Route to get a specific assignment;
 async function getAssignment(req, res) {
   const { assignment_id } = req.params;
   try {
+<<<<<<< HEAD
     
+=======
+>>>>>>> 2509ae2d19149e95ea991682d928185614267bda
     const targetClass = await Class.find({ 'assignments._id': `${assignment_id}` }, {'assignments.$': 1});
     res.json({success: true, targetClass})
 

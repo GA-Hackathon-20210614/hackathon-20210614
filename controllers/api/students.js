@@ -71,10 +71,10 @@ async function deleteStudent(req, res) {
 			req.params.id,
 			function(err){
 				if(err){
-					console.log('Deletion failed',err);
+					res.json('Deletion failed',err);
 				}
 				else {
-					console.log('Deleted');
+					res.json('Deleted');
 				}
 			});
 
