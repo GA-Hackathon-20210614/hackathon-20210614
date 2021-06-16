@@ -11,7 +11,13 @@ export default function ClassPage({ user }) {
     useEffect(() => {
         async function getStudents(){
             const classes = await classAPI.getById(id)
-            .then(res => setStudents(res.targetClass.students));
+            .then(res => {
+                console.log(res.targetClass.students)
+                const names = res.targetClass.students.map((s, idx) => (
+                    `${s.last_name}, ${s.first_name}`
+                  ));
+                setStudents(names)
+            });
             // try{
             //     fetch(`http://localhost:3001/api/classes/${id}`)
             //         .then(res => res.json())
@@ -28,15 +34,6 @@ export default function ClassPage({ user }) {
         }
         getStudents()
     }, [])
-
-    // useEffect(() => {
-    //     async function mapStudents(){
-    //         studentList = students.map((s, idx) => (
-    //             <li>{s}</li>
-    //         ))
-    //     }
-    //     mapStudents()
-    // }, [students])
     
     const studentList = students.map((s, idx) => (
         <li>{s}</li>
