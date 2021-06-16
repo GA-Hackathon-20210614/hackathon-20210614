@@ -7,6 +7,7 @@ export default function ClassCard ({ theClass }) {
     const endings = ['st', 'nd', 'rd', 'th']
 
     return (
+        
         <Link to={`/class/${theClass._id}`} >
         <div className="class-card">
             <div>{theClass.period}{theClass.period < 4 ? endings[theClass.period - 1] : endings[3]} Period</div>
