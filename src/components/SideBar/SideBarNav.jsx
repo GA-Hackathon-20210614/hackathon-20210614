@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { AccessAlarm, ThreeDRotation } from '@material-ui/icons';
 import Drawer from '@material-ui/core/Drawer';
@@ -18,7 +19,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
-import Image from '../../components/Image/Image';
+import Image from '../Image/Image';
 
 const drawerWidth = 240;
 
@@ -46,8 +47,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SideBarNav() {
+export default function SideBarNav(props) {
   const classes = useStyles();
+
 
   return (
     <div className={classes.root}>
@@ -61,12 +63,30 @@ export default function SideBarNav() {
         anchor="left"
         >
         <div className={classes.toolbar}/> 
-        <Image src="https://thispersondoesnotexist.com/image" alt="random-person" shape="circle" caption="current user"/>
+        {
+          props.user ? 
+          <Image src="https://thispersondoesnotexist.com/image" alt="random-person" shape="circle" caption={`${props.user.first_name} ${props.user.last_name}`}/>
+          : 
+          <>
+          </>
+        }
         <Divider />
         <List>
         {['Dashboard' , 'Gradebook' ].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <DashboardIcon style={{ color: 'orange' }} /> : <AssignmentIcon />}</ListItemIcon>
+         
+              <ListItemIcon>{index % 2 === 0 ? 
+            
+                <Link to="/dashboard" >
+                  <DashboardIcon style={{ color: 'orange' }} />
+                </Link>
+                : 
+                <Link to="/assignments">
+                  <AssignmentIcon />
+                </Link>
+                }
+              </ListItemIcon>
+      
               <ListItemText primary={text} />
             </ListItem>
           ))}

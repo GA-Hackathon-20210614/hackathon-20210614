@@ -19,7 +19,6 @@ function Image(props) {
 		// unhandledProps
 	} = props;
 
-    console.log(props)
 
 	const generateClassName = () => {
 		let classes = [];
@@ -32,7 +31,6 @@ function Image(props) {
 		// 	classes.push('v-align--' + verticalAlign);
 		if (shape)
 			classes.push('shape-' + shape);
-            console.log(shape)
 		if (className) 
 			classes.push(className);
 

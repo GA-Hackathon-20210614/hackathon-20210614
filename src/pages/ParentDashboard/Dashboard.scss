@@ -1,0 +1,36 @@
+@import "../../styles/global";
+
+$sidebar-space: 240px;
+
+.container {
+    background-color: #f6f6f6;
+    display: flex;
+}
+
+.dash-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.dash-header {
+    background-color: inherit;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 220px;
+    padding: 30px;
+    width: 100%;
+
+    h1 {
+        font-size: 35px;
+        font-weight: 400;
+        font-family: $font-codec;
+        pointer-events: none;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-family: $font-codec;
+        pointer-events: none;
+    }
+}

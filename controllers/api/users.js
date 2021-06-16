@@ -59,11 +59,11 @@ async function dashboard(req, res) {
     if(currentUser.isTeacher) {
       // find all classes related to teacher
       const classes = await Classes.find({ teacher: _id }); 
-			res.json({ success: true, classes});
+			res.json({ success: true, userIsTeacher: true, classes});
 		} else if (!currentUser.isTeacher) { 
       // find all children related to parent
       const children =  await Student.find({ parent: _id }); 
-      res.json({ success: true, children});
+      res.json({ success: true, userIsTeacher: false, children});
 		} else {
 			res.json({ success: false, message: "Authorization error"});
 		};

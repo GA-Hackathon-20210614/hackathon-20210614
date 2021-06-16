@@ -11,12 +11,40 @@
     width: 190px;
     height: 218px;
     border-radius: 5.31px;
-    background-color: var(--primary-dark);
+    background-color: $dark-orange;
     box-shadow: 0px 3.98438px 6.64062px rgba(0, 0, 0, 0.2), 0px 1.32812px 23.9062px rgba(0, 0, 0, 0.12), 0px 7.96875px 13.2812px rgba(0, 0, 0, 0.14);
     display: flex;
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
+    margin: 1em;
+
+    &:hover {
+        border: 2px solid $dark-blue;
+        transition: all .3s linear;
+    }
+}
+
+.add-class-btn {
+    background-color: transparent;
+    // width: 190px;
+    // height: 218px;
+    border: 1px solid $dark-blue;
+    // font-size: 64px;
+    color: $dark-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    div {
+        // padding-top: .5em;
+        align-self: center;
+        font-size: 64px;
+        width: 64px;
+        height: 64px;
+    }
 }
 
 .class-card > * {
