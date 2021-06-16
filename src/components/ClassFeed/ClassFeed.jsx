@@ -1,8 +1,9 @@
 import React from 'react'
 import ClassCard from '../ClassCard/ClassCard'
+import MaterialModal from '../MaterialModal/MaterialModal'
 import './ClassFeed.scss'
 
-export default function ClassFeed ({ classes }) {
+export default function ClassFeed ({ classes, handleClick }) {
 
 
 
@@ -13,11 +14,7 @@ export default function ClassFeed ({ classes }) {
                     return <ClassCard key={theClass._id} theClass={theClass} />
                 })
             }
-            <div className="class-card add-class-btn">
-                <div>
-                    +
-                </div>
-            </div>
+            <MaterialModal handleClick={handleClick}/>
         </div>
     )
 }

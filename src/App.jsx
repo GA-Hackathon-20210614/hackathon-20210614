@@ -7,6 +7,7 @@ import IndexPage from './pages/IndexPage/IndexPage';
 import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
 import ClassPage from './pages/ClassPage/ClassPage';
 import LandingPage from './pages/LandingPage/LandingPage';
+import DashboardPage from './pages/DashboardPage/DashboardPage';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -20,15 +21,18 @@ export default function App() {
             <LandingPage />
             </Route>
             { user ?
-            <>
+              <Switch>
               <Route exact path="/dashboard">
                 <TeacherDashboard user={user} />
               </Route>
               <Route exact path="/class/:id">
                 <ClassPage user={user} />
               </Route>
+              <Route exact path="/class/:id">
+                <ClassPage user={user} />
+              </Route>
               <Redirect to='/dashboard'/>
-              </>
+              </Switch>
               :
               <AuthPage setUser={setUser} />
             }

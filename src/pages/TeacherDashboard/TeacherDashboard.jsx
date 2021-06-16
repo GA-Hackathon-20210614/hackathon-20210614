@@ -47,13 +47,20 @@ export default function TeacherDashboard({ user }) {
     }
   }
 
-  // Add a class if teacher
-  async function addClass(data) {
-    try {
-      await classApi.create(data);
-    } catch (error) {
-      console.log(error);
-    }
+    // Add a class if teacher
+    async function addClass (data) {
+      const newData = {
+          gradeLevel: data.level,
+          period: data.period,
+          subject: data.subject,
+          time: data.time
+      }
+      try {
+          await classApi.create(newData);
+          getClasses()
+      } catch (error) {
+          console.log(error)
+      }
   }
 
   // If parent is logged in, show their students
@@ -111,7 +118,7 @@ export default function TeacherDashboard({ user }) {
         <Header user={user} />
 
         <div className="dash-body">
-          <Body user={user} classes={classes} />
+          <Body user={user} classes={classes} handleClick={addClass}/>
         </div>
       </div>
     </div>

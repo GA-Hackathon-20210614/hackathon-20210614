@@ -34,7 +34,7 @@ export default function LandingPage() {
           </div>
           <div className="contentR">
             <span className="heading">Bridging the gap between 
-    patents and teachers.</span>
+    parents and teachers.</span>
           </div>
       </section>
       <section id="about">
@@ -61,7 +61,7 @@ export default function LandingPage() {
             <div className="landing"> 
                 <div className="contentL">
             <span className="t2">For Parents</span><br/><br/>
-            <p>Whether you have 1 child or 12, you can easily track and manage their education in one place. With access to attendnce and grades you are able to step in to help you child before it’s to late.</p>
+            <p>Whether you have 1 child or 12, you can easily track and manage their education in one place. With access to attendance and grades you are able to step in to help you child before it’s to late.</p>
                     </div>
                 <div className="contentR">
                     <img src={combo2} alt="pic2" className="combo2"/>

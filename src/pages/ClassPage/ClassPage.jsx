@@ -1,46 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import ClassCard from '../../components/ClassCard/ClassCard'
-import { useParams } from 'react-router-dom';
-import './ClassPage.scss';
-import axios from 'axios';
+import { useParams } from 'react-router-dom'
+import * as classAPI from "../../utilities/classes-api";
 
 export default function ClassPage({ user }) {
     const [students, setStudents] = useState([])
-    const params = useParams();
-    
+    let {id} = useParams();
+
     //function to get students from class
-    async function getStudents(params){
+    useEffect(() => {
+        async function getStudents(){
+            const classes = await classAPI.getById(id)
+            .then(res => console.log('bloop', res));
+            // try{
+            //     fetch(`http://localhost:3001/api/classes/${id}`)
+            //         .then(res => res.json())
+            //         .then((result)=>{
+            //             console.log('bloop',result);
+            //         })
 
-        fetch(`http://localhost:3001/api/classes/${params.id}`)
-            .then(res => res.json())
-            .then((result)=>{
-                console.log(result);
-            })
-
+            // } catch(err) {
+            //     console.log(err)
+            // }
         //We need class id
         //call to api with class id to get student array
         //save student array to student state
-    }
-
-    async function studentList(){
-        getStudents();
-        //itterate over student array with route to specific student id
-    }
-
-    useEffect(() => {
-        // console.log(process.env.REACT_APP_SERVER_URL);
-        if (user.isTeacher) {
-          getStudents(params);
-        } else {
-          getStudents();
         }
-    }, []);
+        getStudents()
+    })
 
     return(
         <div>
             List of Students
             { ClassCard }
-            { studentList }
+            { students }
         </div>
     )
 }
