@@ -38,15 +38,11 @@ export default function Material_Modal(props) {
 
   return (
 
-    <div>
-      { buttonText ? 
-        <button className="btn-orange" type="button" onClick={handleOpen}>
+    <div> 
+        <button className={props.btnClass} type="button" onClick={handleOpen}>
           {buttonText}
-        </button> :
-        <div id="add-class-btn" onClick={handleOpen}>
-            +
-        </div>
-      }
+        </button> 
+
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -63,7 +59,9 @@ export default function Material_Modal(props) {
         {/* modal content */}
           <div className={classes.paper}>
           {
-            buttonText ? 'Announcements' : <ClassForm handleCreateClass={props.handleClick} />
+            buttonText === "Announcements" ? <h1>Announcements Form</h1>
+            :
+             <ClassForm handleCreateClass={props.handleClick} />
           }
             
             {/* <h2 id="transition-modal-title">Transition modal</h2>

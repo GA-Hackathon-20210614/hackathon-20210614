@@ -14,7 +14,13 @@ export default function ClassFeed ({ classes, handleClick }) {
                     return <ClassCard key={theClass._id} theClass={theClass} />
                 })
             }
-            <MaterialModal handleClick={handleClick}/>
+        
+            <MaterialModal handleClick={handleClick} btnClass="class-card add-class-btn" buttonText={
+                <div>
+                    +
+                </div>
+            }/>
+            
         </div>
     )
 }

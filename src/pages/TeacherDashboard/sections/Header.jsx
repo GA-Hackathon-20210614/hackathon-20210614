@@ -12,7 +12,7 @@ export default function Header({ user }) {
             </div>
 
             <div className="dash-btn">
-                <MaterialModal buttonText="Announcements" />
+                <MaterialModal buttonText="Announcements" btnClass="btn-orange"/>
             </div>
 
         </div>
