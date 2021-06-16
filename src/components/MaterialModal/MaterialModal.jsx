@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
 import Fade from '@material-ui/core/Fade';
+import ClassForm from '../ClassForm/ClassForm';
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -38,9 +39,14 @@ export default function Material_Modal(props) {
   return (
 
     <div>
-      <button className="btn-orange" type="button" onClick={handleOpen}>
-        {buttonText}
-      </button>
+      { buttonText ? 
+        <button className="btn-orange" type="button" onClick={handleOpen}>
+          {buttonText}
+        </button> :
+        <div id="add-class-btn" onClick={handleOpen}>
+            +
+        </div>
+      }
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -56,9 +62,10 @@ export default function Material_Modal(props) {
         <Fade in={open}>
         {/* modal content */}
           <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
+            <ClassForm />
+            {/* <h2 id="transition-modal-title">Transition modal</h2>
 
-            <p id="transition-modal-description">react-transition-group animates me.</p>
+            <p id="transition-modal-description">react-transition-group animates me.</p> */}
           </div>
         </Fade>
       </Modal>
