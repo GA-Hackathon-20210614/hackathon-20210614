@@ -7,6 +7,9 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 // READ all classes
 router.get('/index', classesCtrl.index);
 
+// Get specific class
+router.get('/:id', ensureLoggedIn, classesCtrl.findClass);
+
 // // CREATE classes
 router.post('/create', ensureLoggedIn, classesCtrl.create);
 // // UPDATE classes 
@@ -17,6 +20,9 @@ router.post('/:id/addAssignment', ensureLoggedIn, classesCtrl.addAssignment)
 
 // GET SPECIFIC ASSIGNMENT
 router.get('/:class_id/:assignment_id', classesCtrl.getAssignment)
+
+// DELETE SPECIFIC ASSIGNMENT
+router.delete('/:class_id/:assignment_id', classesCtrl.deleteAssignment)
 
 // DELETE classes
 router.delete('/:id/delete', ensureLoggedIn, classesCtrl.remove);

@@ -55,3 +55,23 @@ async function deleteAssignment(req, res, next) {
 		return next(err);
 	}
 }
+
+async function deleteAssignment(req, res) {
+	try{
+
+		const assignment = await Assignment.findByIdAndDelete(
+			req.params.id,
+			function(err){
+				if(err){
+					res.json({success: false , err });
+				}
+				else {
+					res.json('Deleted');
+				}
+			});
+
+		res.json({ success: true, assignment })
+	} catch (err) {
+		res.status(400).json(err);
+	}
+}

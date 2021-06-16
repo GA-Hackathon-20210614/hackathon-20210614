@@ -18,6 +18,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 // import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import Image from '../../components/Image/Image';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({ 
@@ -58,9 +60,8 @@ export default function SideBarNav() {
         }}
         anchor="left"
         >
-        <div className={classes.toolbar} />
-        
-          <h1> Hi, Teacher/Parent! </h1>
+        <div className={classes.toolbar}/> 
+        <Image src="https://thispersondoesnotexist.com/image" alt="random-person" shape="circle" caption="current user"/>
         <Divider />
         <List>
         {['Dashboard' , 'Gradebook' ].map((text, index) => (

@@ -1,14 +1,23 @@
+
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.scss';
 import * as classApi from '../../utilities/classes-api';
+import * as studentApi from '../../utilities/students-api';
 import ClassFeed from '../../components/ClassFeed/ClassFeed';
 import SideBarNav from '../SideBar/SideBarNav';
 import MaterialModal from '../../components/MaterialModal/MaterialModal';
+import axios from 'axios';
 
 export default function DashboardPage ({ user }) {
 
     const [classes, setClasses] = useState([])
     const [students, setStudents] = useState([])
+    let data= {
+        
+      };
+    const headers = {
+        'Content-Type': 'application/json'
+    };
 
     const mockClasses = [
         {
@@ -48,10 +57,31 @@ export default function DashboardPage ({ user }) {
 
     // If parent is logged in, show their students
     function getStudents () {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}api/students/index`, data, headers)
+        .then( response => {
+            console.log('Axios calling');
+            console.log(response.data);
+        }).catch (err=>{
+            console.log('Failed');
+            console.log(err);
+        })
+        /*
+        try{
+            const allStudents = await studentApi.getAll();
+            console.log('hi', allStudents);
+        } catch (error) {
+            console.log(error)
+        }
+        */
         // nothing yet
     }
 
+    function handleAnnouncementClick () {
+        // Get form for new announcement
+    }
+
     useEffect(() => {
+        console.log( process.env.REACT_APP_SERVER_URL );
         if (user.isTeacher) {
             getClasses()
         } else {
@@ -63,8 +93,10 @@ export default function DashboardPage ({ user }) {
         <div id="dashboard-container">
             <SideBarNav />
             <div id="dash-header">
+                { process.env.REACT_APP_SERVER_URL }
                 <h1>School Title</h1>
                 <h2>Hi, {user.first_name}!</h2>
+
                 <div className="dash-btn">
                     <MaterialModal buttonText="Announcements" />
                 </div>

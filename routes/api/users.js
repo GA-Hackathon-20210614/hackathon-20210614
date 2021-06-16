@@ -8,6 +8,10 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 
 router.get('/index', usersCtrl.index);
 
+// GET /api/users/dashboard
+
+router.get('/dashboard', ensureLoggedIn, usersCtrl.dashboard)
+
 // GET /api/users/:userId
 router.get('/:id', usersCtrl.findOne);
 
