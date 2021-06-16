@@ -14,6 +14,9 @@ export default function ClassFeed ({ classes }) {
                     return <ClassCard key={theClass._id} theClass={theClass} />
                 })
             }
+            <div id="add-class-btn">
+                +
+            </div>
         </div>
     )
 }
