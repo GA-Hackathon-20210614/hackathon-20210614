@@ -1,8 +1,44 @@
 @import "./node_modules/material-ui-sass/material-ui";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@600&display=swap');
 
 #dashboard-container {
-    background-color: var(--main-bg);
+    background-color: #f6f6f6;
     width: 100vw;
     height: 100vh;
 }
 
+#dash-header {
+    width: 100vw;
+    height: 300px;
+    padding: 30px;
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+}
+
+#dash-header h1 {
+    font-size: 35px;
+    font-weight: 400;
+    font-family: 'Prata', serif;
+    pointer-events: none;
+}
+
+#dash-header h2 {
+    font-size: 24px;
+    font-family: 'Lato', sans-serif;
+    pointer-events: none;
+}
+
+#announcements-btn {
+    background-color: var(--primary-dark);
+    padding: 10px 16px;
+    border-radius: 4px;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+    display: inline;
+    color: white;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    position: absolute;
+    top: 30px;
+    right: 60px;
+    cursor: pointer;
+}
