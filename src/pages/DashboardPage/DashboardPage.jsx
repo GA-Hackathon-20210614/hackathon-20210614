@@ -52,6 +52,7 @@ export default function DashboardPage ({ user }) {
     }
 
     useEffect(() => {
+        console.log( process.env.REACT_APP_SERVER_URL );
         if (user.isTeacher) {
             getClasses()
         } else {
@@ -63,6 +64,7 @@ export default function DashboardPage ({ user }) {
         <div id="dashboard-container">
             <SideBarNav />
             <div id="dash-header">
+                { process.env.REACT_APP_SERVER_URL }
                 <h1>School Title</h1>
                 <h2>Hi, {user.first_name}!</h2>
                 <div className="dash-btn">
