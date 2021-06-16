@@ -42,6 +42,7 @@ export default function LogIn({ setUser }) {
             Password
           </label>
             <input className="authFields" type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            {/* <h3>Forgot Password</h3> */}
             <Button id="login" type="submit" variant="contained">LOG IN</Button>
         </form>
       </div>

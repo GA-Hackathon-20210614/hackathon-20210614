@@ -14,8 +14,9 @@ body {
 .form-container {
   max-width: 90vw;
   padding: 2rem;
-  background-color: peachpuff;
+  background-color: E9E9E9;
   border: 0.3vmin solid var(--bgc-05);
+  border: 1.5px solid grey;
   /* border-radius: 1rem; */
 }
 form {
@@ -24,6 +25,7 @@ form {
   grid-template-columns: 1fr 3fr;
   gap: 0.5vmin;
   color: var(--bgc-05);
+  
 }
 label {
   font-size: 1.3em;

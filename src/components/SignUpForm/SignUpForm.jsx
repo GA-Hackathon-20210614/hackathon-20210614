@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import { signUp } from '../../utilities/users-service';
 import Button from '@material-ui/core/Button';
+import './SignUpForm.scss';
 
 
 export default class SignUpForm extends Component {
@@ -94,7 +95,7 @@ export default class SignUpForm extends Component {
               <input type="radio" name="isTeacher" value="false" onChange={this.handleRadio} checked={this.state.isTeacher === false} required /> */}
               
 
-            <Button type="submit" variant="contained" disabled={disable}>SIGN UP</Button>
+            <Button id="signup" type="submit" variant="contained" disabled={disable}>SIGN UP</Button>
 
           </form>
         </div>
