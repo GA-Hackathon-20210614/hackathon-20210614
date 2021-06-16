@@ -1,9 +1,12 @@
 const User = require('../../models/user');
+const Classes = require('../../models/class');
+const Student = require('../../models/student');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 module.exports = {
   create,
+  dashboard,
   login,
   checkToken,
   index,
@@ -44,6 +47,29 @@ async function index(req, res) {
 
   } catch {
     res.status(400).json('Couldn`t find users');
+  }
+}
+
+async function dashboard(req, res) {
+  const currentUser = req.user;
+  const _id = currentUser._id
+
+  try {
+    
+    if(currentUser.isTeacher) {
+      // find all classes related to teacher
+      const classes = await Classes.find({ teacher: _id }); 
+			res.json({ success: true, classes});
+		} else if (!currentUser.isTeacher) { 
+      // find all children related to parent
+      const children =  await Student.find({ parent: _id }); 
+      res.json({ success: true, children});
+		} else {
+			res.json({ success: false, message: "Authorization error"});
+		};
+
+  } catch {
+    res.status(400).json("Authorization error");
   }
 }
 

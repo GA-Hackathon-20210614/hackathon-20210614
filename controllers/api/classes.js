@@ -7,6 +7,7 @@ const bcrypt = require("bcrypt");
 module.exports = {
   create,
   edit,
+  findClass,
   remove,
   index,
   addAssignment,
@@ -17,7 +18,6 @@ async function index(req, res) {
   try {
     // show index of all classes for testing
     const classes = await Class.find({});
-
     res.json({ sucess: true, classes });
   } catch {
     res.status(400).json("Couldn`t retrieve all classes");
@@ -44,6 +44,23 @@ async function create(req, res) {
   } catch (err) {
     res.status(400).json(err);
   }
+}
+
+async function findClass(req, res) {
+  const _id = req.params.id;
+	try {
+		const currentUser = req.user; //grabbing current user
+
+    const targetClass = await Class.findOne({ _id });
+    if (!targetClass) throw new Error("Class does not exist");
+
+    // check if the teacher owns the class
+    if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
+
+    res.json({success: true, targetClass})
+	} catch {
+		res.status(400).json('Couldn`t find class');
+	}
 }
 
 async function edit(req, res) {
@@ -144,7 +161,6 @@ async function getAssignment(req, res) {
   try {
     
     const targetClass = await Class.find({ 'assignments._id': `${assignment_id}` }, {'assignments.$': 1});
-    console.log(targetClass)
     res.json({success: true, targetClass})
 
   } catch (error) {
