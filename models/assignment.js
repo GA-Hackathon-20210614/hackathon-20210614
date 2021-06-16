@@ -2,16 +2,6 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const assignmentSchema = new Schema({
-	student: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Student',
-		required: true
-	},
-	class: {
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'Class',
-		required: true
-	},
 	title: {
 		type: String,
 		required: true

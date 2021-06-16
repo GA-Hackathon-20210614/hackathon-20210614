@@ -11,7 +11,7 @@ export function getById(id) {
 }
 
 export function updateOne(studentData) {
-    return sendRequest(`${BASE_URL}/:${studentData.id}`, 'PUT', studentData);
+    return sendRequest(`${BASE_URL}:${studentData.id}`, 'PUT', studentData);
 }
 
 export function deleteOne(id) {
