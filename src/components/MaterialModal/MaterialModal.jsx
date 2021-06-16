@@ -63,7 +63,7 @@ export default function Material_Modal(props) {
             :
              <ClassForm handleCreateClass={props.handleClick} />
           }
-            
+          
             {/* <h2 id="transition-modal-title">Transition modal</h2>
 
             <p id="transition-modal-description">react-transition-group animates me.</p> */}

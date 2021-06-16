@@ -95,7 +95,7 @@ export default function DashboardPage ({ user }) {
             <SideBarNav />
             <div id="dash-header">
                 { process.env.REACT_APP_SERVER_URL }
-                <h1>School Title</h1>
+                <h1>Hogwartz School of Wizadry</h1>
                 <h2>Hi, {user.first_name}!</h2>
 
                 <div className="dash-btn">
