@@ -49,6 +49,10 @@ export default function DashboardPage ({ user }) {
         // nothing yet
     }
 
+    function handleAnnouncementClick () {
+        // Get form for new announcement
+    }
+
     useEffect(() => {
         if (user.isTeacher) {
             getClasses()
@@ -63,6 +67,7 @@ export default function DashboardPage ({ user }) {
                 <h1>School Title</h1>
                 <h2>Hi, {user.first_name}!</h2>
                 <div id="announcements-btn">ANNOUNCEMENTS</div>
+                <div onClick={handleAnnouncementClick} id="announcements-btn">ANNOUNCEMENTS</div>
             </div>
             <ClassFeed classes={classes} />
         </div>
