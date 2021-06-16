@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './LoginForm.scss';
 import * as usersService from '../../utilities/users-service';
 import '../../pages/AuthPage/AuthPage.scss';
 import Button from '@material-ui/core/Button';
@@ -33,15 +34,16 @@ export default function LogIn({ setUser }) {
     <div>
       <div className="form-container" onSubmit={handleSubmit}>
         <form autoComplete="off" >
-          <label>
+          <label htmlFor="email">
             Email
-             <input className="authFields" type="text" name="email" value={credentials.email} onChange={handleChange} required />
-            </label>
+          </label>
+             <input className="authFields" type="text" id="email" name="email" value={credentials.email} onChange={handleChange} required autoFocus />
           <label>
             Password
-            <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-            </label>
-            <Button type="submit" variant="contained">LOG IN</Button>
+          </label>
+            <input className="authFields" type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            {/* <h3>Forgot Password</h3> */}
+            <Button id="login" type="submit" variant="contained">LOG IN</Button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>

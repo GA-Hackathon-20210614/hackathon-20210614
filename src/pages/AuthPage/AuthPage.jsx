@@ -31,7 +31,7 @@ export default function AuthPage({ setUser }) {
       <section className="landing">
         <main className="AuthPage">
           {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
-          <div>
+          <div id="auth-button">
           <Button type="submit" variant="contained" onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</Button>
           </div>
         </main>
