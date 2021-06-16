@@ -23,7 +23,7 @@ export default function App() {
               <Switch>
               <Route exact path="/dashboard">
                 <DashboardPage user={user} />
-              </Route>!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+              </Route>
               <Route exact path="/class/:id">
                 <ClassPage user={user} />
               </Route>
