@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import './DashboardPage.scss';
 import * as classApi from '../../utilities/classes-api';
@@ -51,6 +52,10 @@ export default function DashboardPage ({ user }) {
         // nothing yet
     }
 
+    function handleAnnouncementClick () {
+        // Get form for new announcement
+    }
+
     useEffect(() => {
         console.log( process.env.REACT_APP_SERVER_URL );
         if (user.isTeacher) {
@@ -67,6 +72,7 @@ export default function DashboardPage ({ user }) {
                 { process.env.REACT_APP_SERVER_URL }
                 <h1>School Title</h1>
                 <h2>Hi, {user.first_name}!</h2>
+
                 <div className="dash-btn">
                     <MaterialModal buttonText="Announcements" />
                 </div>

@@ -10,13 +10,18 @@ export default function ClassPage({ user }) {
     async function getStudents(){
         let id = useParams();
 
-        fetch(`http://localhost:3001/api/classes`,{id})
+        fetch(`http://localhost:3001/api/classes/`,{id})
+            .then(res => res.json())
+            .then((result)=>{
+                console.log(result);
+            })
         //We need class id
         //call to api with class id to get student array
         //save student array to student state
     }
 
     async function studentList(){
+        getStudents();
         //itterate over student array with route to specific student id
     }
 
