@@ -13,6 +13,7 @@ module.exports = {
   deleteAssignment,
   addAssignment,
   getAssignment,
+  addStudent
 };
 
 async function index(req, res) {
@@ -44,6 +45,28 @@ async function create(req, res) {
     res.json({ success: true, createdClass });
   } catch (err) {
     res.status(400).json(err);
+  }
+}
+
+async function addStudent(req, res) {
+  const { class_id, student_id } = req.params;
+
+  try {
+    const currentUser = req.user;
+
+    const targetClass = await Class.findOne({ _id: class_id });
+
+    // check if the teacher owns the class
+    if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
+
+    const targetStudent = await Student.findOne({_id: student_id});
+
+    targetClass.students.push([targetStudent]);
+
+
+  } catch(error) {
+    console.log(error);
+    res.json( { success: false, })
   }
 }
 
@@ -167,10 +190,6 @@ async function deleteAssignment(req ,res){
 async function getAssignment(req, res) {
   const { assignment_id } = req.params;
   try {
-<<<<<<< HEAD
-    
-=======
->>>>>>> 2509ae2d19149e95ea991682d928185614267bda
     const targetClass = await Class.find({ 'assignments._id': `${assignment_id}` }, {'assignments.$': 1});
     res.json({success: true, targetClass})
 
