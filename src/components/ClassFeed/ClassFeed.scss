@@ -1,25 +1,26 @@
 @import '../../styles/global';
 
-#class-feed-container {
+.class-feed-container {
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    padding: 40px;
-    gap: 40px;
-    row-gap: 0;
+    
+    // padding: 40px;
+    // gap: 40px;
+    // row-gap: 0;
 }
 
-#add-class-btn {
-    width: 190px;
-    height: 218px;
-    border: 1px solid $dark-blue;
-    font-size: 64px;
-    color: $dark-blue;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-}
+// #add-class-btn {
+//     width: 190px;
+//     height: 218px;
+//     border: 1px solid $dark-blue;
+//     font-size: 64px;
+//     color: $dark-blue;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     cursor: pointer;
+// }

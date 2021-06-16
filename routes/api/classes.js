@@ -12,6 +12,10 @@ router.get('/:id', classesCtrl.findClass);
 
 // // CREATE classes
 router.post('/create', ensureLoggedIn, classesCtrl.create);
+
+// ADD student to class
+router.put('/:class_id/addStudent/:student_id', classesCtrl.addStudent);
+
 // // UPDATE classes 
 router.put('/:id/edit', ensureLoggedIn, classesCtrl.edit);
 

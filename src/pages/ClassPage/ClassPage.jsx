@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import './ClassPage.scss'
 import ClassCard from '../../components/ClassCard/ClassCard'
 import { useParams } from 'react-router-dom'
 import * as classAPI from "../../utilities/classes-api";

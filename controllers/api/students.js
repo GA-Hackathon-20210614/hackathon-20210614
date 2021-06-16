@@ -90,16 +90,24 @@ async function findOne(req, res) {
 		const currentUser = req.user; //grabbing current user
 		// show specific student
 		const student = await Student.findOne({_id});
+		const classes = await Classes.find({ students: student._id });
+		const parent =  await User.findOne({_id: student.parent });
+		if (!currentUser.isTeacher && currentUser._id == student.parent) throw new Error("Authorization error")
 
-		if(currentUser.isTeacher) {
-			const parent =  await User.findOne({_id: student.parent }); // we might have to do this to get the name of the parent
-			res.json({ student, parent});
-		} else if (!currentUser.isTeacher && currentUser._id == student.parent) { // checking if this is the requesters child 
-			const classes = await Classes.find({ students: student._id }); // we might have to do this to get the name of classes
-			res.json({ student, classes});
-		} else {
-			res.json({ success: false, message: "Authorization error"});
-		};
+		res.json({ student, classes, parent});
+
+		// if(currentUser.isTeacher) {
+		// 	const classes = await Classes.find({ students: student._id }); // we might have to do this to get the name of classes
+		// 	const parent =  await User.findOne({_id: student.parent }); // we might have to do this to get the name of the parent
+
+		// 	res.json({ student, classes, parent});
+		// } else if (!currentUser.isTeacher && currentUser._id == student.parent) { // checking if this is the requesters child 
+		// 	const classes = await Classes.find({ students: student._id }); // we might have to do this to get the name of classes
+		// 	const parent =  await User.findOne({_id: student.parent });
+		// 	res.json({ student, classes, parent});
+		// } else {
+		// 	res.json({ success: false, message: "Authorization error"});
+		// };
 	
 	} catch {
 		res.status(400).json('Couldn`t find student');

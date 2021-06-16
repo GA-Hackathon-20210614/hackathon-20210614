@@ -1,7 +1,7 @@
 import * as userService from "../../utilities/users-service";
 import { Link } from "react-router-dom";
 import { useState } from "react";
-import SideBarNav from '../SideBar/SideBarNav';
+import SideBarNav from '../../components/SideBar/SideBarNav';
 
 export default function IndexPage({ user, setUser }) {
   const [student, setStudent] = useState({

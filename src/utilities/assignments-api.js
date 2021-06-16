@@ -7,15 +7,15 @@ export function getAll() {
 }
 
 export function getById(id) {
-    return sendRequest(`${BASE_URL}/:${id}`);
+    return sendRequest(`${BASE_URL}/${id}`);
 }
 
 export function updateOne(assignmentData) {
-    return sendRequest(`${BASE_URL}/:${assignmentData.id}`, 'PUT', assignmentData);
+    return sendRequest(`${BASE_URL}/${assignmentData.id}`, 'PUT', assignmentData);
 }
 
 export function deleteOne(id) {
-    return sendRequest(`${BASE_URL}/:${id}`, 'DELETE');
+    return sendRequest(`${BASE_URL}/${id}`, 'DELETE');
 }
 
 export function create(assignmentData) {

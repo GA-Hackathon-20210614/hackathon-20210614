@@ -11,7 +11,11 @@ export function login(credentials) {
 }
 
 export function getById(id) {
-  return sendRequest(`${BASE_URL}/:${id}`);
+  return sendRequest(`${BASE_URL}/${id}`);
+}
+
+export function getDashboard() {
+  return sendRequest(`${BASE_URL}/dashboard`);
 }
 
 export function updateOne(userData) {

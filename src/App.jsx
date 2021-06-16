@@ -4,9 +4,10 @@ import { getUser } from './utilities/users-service';
 import './App.scss';
 import AuthPage from './pages/AuthPage/AuthPage';
 import IndexPage from './pages/IndexPage/IndexPage';
+import TeacherDashboard from './pages/TeacherDashboard/TeacherDashboard';
+import ClassPage from './pages/ClassPage/ClassPage';
+import LandingPage from './pages/LandingPage/LandingPage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
-import LandingPage from './pages/LandingPage/LandingPage'
-import ClassPage from './pages/ClassPage/ClassPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -22,7 +23,10 @@ export default function App() {
             { user ?
               <Switch>
               <Route exact path="/dashboard">
-                <DashboardPage user={user} />
+                <TeacherDashboard user={user} />
+              </Route>
+              <Route exact path="/class/:id">
+                <ClassPage user={user} />
               </Route>
               <Route exact path="/class/:id">
                 <ClassPage user={user} />
@@ -34,6 +38,7 @@ export default function App() {
             }
             <Route exact path="/login">
               <AuthPage setUser={setUser} />
+
             </Route>
             <Redirect to='/'/>
           </Switch> 

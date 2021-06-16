@@ -1,0 +1,31 @@
+@import "../../../styles/global";
+
+.dash-header {
+    background-color: inherit;
+    border-bottom: 1px solid #e5e5e5;
+    min-height: 220px;
+    padding: 30px;
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    h1 {
+        font-size: 42px;
+        font-weight: 200;
+        font-family: $font-crimson;
+        pointer-events: none;
+    }
+
+    h2 {
+        font-size: 24px;
+        font-weight: 400;
+        font-family: 'Lato', sans-serif;
+        pointer-events: none;
+    }
+}
+
+.dash-btn {
+    align-items: flex-start;
+}

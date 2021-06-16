@@ -17,6 +17,33 @@
     flex-direction: column;
     justify-content: center;
     cursor: pointer;
+    margin: 1em;
+
+    &:hover {
+        border: 2px solid $dark-blue;
+        transition: all .3s linear;
+    }
+}
+
+.add-class-btn {
+    
+    background-color: transparent;
+    border: 1px solid $dark-blue;
+    // font-size: 64px;
+    color: $dark-blue;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    div {
+        // padding-top: .5em;
+        align-self: center;
+        font-size: 64px;
+        width: 64px;
+        height: 64px;
+    }
 }
 
 .class-card > * {

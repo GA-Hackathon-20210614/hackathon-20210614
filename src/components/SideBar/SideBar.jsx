@@ -4,13 +4,11 @@ import DashboardIcon from "../../images/dashboard.svg";
 import AssignmentIcon from "../../images/assignment.svg";
 import SettingsIcon from "../../images/settings.svg";
 
-import Image from '../../components/Image/Image';
+import Image from '../Image/Image';
 
 
 function SideBar(props) {
     const caption = "user"
-    console.log(props);
-    console.log(props.currentUser);
     return (
         <div>   
             <Button variant="contained"><img src={DashboardIcon} /> Dashboard</Button>

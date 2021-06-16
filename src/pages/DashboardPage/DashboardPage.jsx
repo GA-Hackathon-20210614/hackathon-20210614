@@ -1,10 +1,10 @@
 
 import React, { useState, useEffect } from 'react';
-import './DashboardPage.scss';
+// import './DashboardPage.scss';
 import * as classApi from '../../utilities/classes-api';
 import * as studentApi from '../../utilities/students-api';
 import ClassFeed from '../../components/ClassFeed/ClassFeed';
-import SideBarNav from '../SideBar/SideBarNav';
+import SideBarNav from '../../components/SideBar/SideBarNav';
 import MaterialModal from '../../components/MaterialModal/MaterialModal';
 import axios from 'axios';
 
