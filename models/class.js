@@ -65,6 +65,10 @@ const classSchema = new Schema({
         required: true,
         min: 1
     },
+    time: {
+        type: String,
+        required: true
+    },
     assignments: [assignmentsSchema],
     description: String
 }, {

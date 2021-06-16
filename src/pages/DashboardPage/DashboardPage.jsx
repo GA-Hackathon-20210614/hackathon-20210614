@@ -12,6 +12,7 @@ export default function DashboardPage ({ user }) {
 
     const [classes, setClasses] = useState([])
     const [students, setStudents] = useState([])
+
     let data= {
         
       };
@@ -19,28 +20,13 @@ export default function DashboardPage ({ user }) {
         'Content-Type': 'application/json'
     };
 
-    const mockClasses = [
-        {
-            subject: 'Math',
-            period: 2,
-            students: [1,2,3,4,5],
-            _id: 495847594
-        },
-        {
-            subject: 'English',
-            period: 3,
-            students: [1,2,3,4,5,6,7,8],
-            _id: 495847563
-        }
-
-    ]
 
     // If teacher is logged in, show their classes
     async function getClasses () {
         try {
             const allClasses = await classApi.getAll()
             const teachersClasses = allClasses.classes.filter(thisClass => user._id === thisClass.teacher)
-            setClasses([...teachersClasses, ...mockClasses])
+            setClasses(teachersClasses)
         } catch (error) {
             console.log(error)
         }
@@ -48,8 +34,15 @@ export default function DashboardPage ({ user }) {
 
     // Add a class if teacher
     async function addClass (data) {
+        const newData = {
+            gradeLevel: data.level,
+            period: data.period,
+            subject: data.subject,
+            time: data.time
+        }
         try {
-            await classApi.create(data);
+            await classApi.create(newData);
+            getClasses()
         } catch (error) {
             console.log(error)
         }
@@ -109,7 +102,7 @@ export default function DashboardPage ({ user }) {
                     <MaterialModal buttonText="Announcements" />
                 </div>
             </div>
-            <ClassFeed classes={classes} />
+            <ClassFeed classes={classes} handleClick={addClass} />
         </div>
     )
 }
