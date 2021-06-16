@@ -60,7 +60,15 @@ export default function DashboardPage ({ user }) {
         axios.get(`${process.env.REACT_APP_SERVER_URL}api/students/index`, data, headers)
         .then( response => {
             console.log('Axios calling');
-            console.log(response.data);
+            console.log(response.data.students);
+            response.data.students.forEach( student => {
+                if(student.parent == user.id){
+                    console.log('1',student);
+                    setStudents( prevstudent=>[...prevstudent, student])
+                }
+                
+            })
+            console.log('State',students);
         }).catch (err=>{
             console.log('Failed');
             console.log(err);
