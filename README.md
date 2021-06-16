@@ -14,6 +14,13 @@ For Parents, whether you have 1 child or 12, you can easily track and manage the
 #### Dashboard
 ![Dashboard](src/images/Dashboard.png)
 
+### Documentation
+
+https://documenter.getpostman.com/view/14742524/TzeUoUcy
+https://www.figma.com/file/QHOktXC9aios5zmRHsEo74/GA-Hackathon-team-library?node-id=411%3A971
+https://lucid.app/lucidchart/2d4378c7-efc0-4793-aaa5-968dee86ceaa/edit?shared=true&page=0_0#
+https://trello.com/b/rDStJAUO/schedule
+https://trello.com/b/zQArBzXq/backend
 
 ### Languages and Tools
 
