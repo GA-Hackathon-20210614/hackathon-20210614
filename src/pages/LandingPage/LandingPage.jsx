@@ -16,7 +16,7 @@ export default function LandingPage() {
     <div className="_container">
       <header className="navContainer">
         <div className="nav">
-          <div className="t1"> <span id="edu">Edu</span><span id="spark">Spark</span> </div>
+          <div className="t1"> <Link to="/" className="link"><span id="edu">Edu</span><span id="spark">Spark</span> </Link></div>
           <div className="links">
             <Link to="/#about" className="link"> About </Link>
           </div>

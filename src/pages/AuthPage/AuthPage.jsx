@@ -5,6 +5,7 @@ import SignUpForm from '../../components/SignUpForm/SignUpForm';
 import { HashLink as Link } from 'react-router-hash-link';
 import partner from "../../images/partner.png"
 import pledge from "../../images/pledge.png"
+import Button from '@material-ui/core/Button';
 
 
 export default function AuthPage({ setUser }) {
@@ -15,7 +16,7 @@ export default function AuthPage({ setUser }) {
     <div className="_container">
       <header className="navContainer">
         <div className="nav">
-          <div className="t1"> <span id="edu">Edu</span><span id="spark">Spark</span> </div>
+        <div className="t1"> <Link to="/" className="link"><span id="edu">Edu</span><span id="spark">Spark</span> </Link></div>
           <div className="links">
             <Link to="/#about" className="link"> About </Link>
           </div>
@@ -31,7 +32,7 @@ export default function AuthPage({ setUser }) {
         <main className="AuthPage">
           {showLogin ? <LoginForm setUser={setUser} /> : <SignUpForm setUser={setUser} />}
           <div>
-            <button onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</button>
+          <Button type="submit" variant="contained" onClick={() => setShowLogin(!showLogin)}>{showLogin ? 'SIGN UP' : 'LOG IN'}</Button>
           </div>
         </main>
       </section>
