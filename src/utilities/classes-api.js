@@ -1,5 +1,5 @@
 import sendRequest from './send-request';
-
+import { getToken } from "./users-service";
 const BASE_URL = '/api/classes';
 
 export function getAll() {
@@ -7,7 +7,8 @@ export function getAll() {
 }
 
 export function getById(id) {
-    return sendRequest(`${BASE_URL}/:${id}`);
+    const token = getToken();
+    return sendRequest(`${BASE_URL}/${id}`);
 }
 
 export function updateOne(classData) {

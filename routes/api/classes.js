@@ -8,7 +8,7 @@ const ensureLoggedIn = require('../../config/ensureLoggedIn');
 router.get('/index', classesCtrl.index);
 
 // Get specific class
-router.get('/:id', ensureLoggedIn, classesCtrl.findClass);
+router.get('/:id', classesCtrl.findClass);
 
 // // CREATE classes
 router.post('/create', ensureLoggedIn, classesCtrl.create);
