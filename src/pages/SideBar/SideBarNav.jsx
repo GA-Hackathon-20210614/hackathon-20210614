@@ -80,7 +80,6 @@ export default function SideBarNav() {
           ))}
         </List>
       </Drawer>
-      
     </div>
   );
 }

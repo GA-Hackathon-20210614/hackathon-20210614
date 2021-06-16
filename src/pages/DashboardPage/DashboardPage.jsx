@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import './DashboardPage.scss'
-import * as classApi from '../../utilities/classes-api'
-import ClassFeed from '../../components/ClassFeed/ClassFeed'
+
+import React, { useState, useEffect } from 'react';
+import './DashboardPage.scss';
+import * as classApi from '../../utilities/classes-api';
+import ClassFeed from '../../components/ClassFeed/ClassFeed';
 import SideBarNav from '../SideBar/SideBarNav';
+import MaterialModal from '../../components/MaterialModal/MaterialModal';
 
 export default function DashboardPage ({ user }) {
 
@@ -68,8 +70,10 @@ export default function DashboardPage ({ user }) {
             <div id="dash-header">
                 <h1>School Title</h1>
                 <h2>Hi, {user.first_name}!</h2>
-                <div id="announcements-btn">ANNOUNCEMENTS</div>
-                <div onClick={handleAnnouncementClick} id="announcements-btn">ANNOUNCEMENTS</div>
+
+                <div className="dash-btn">
+                    <MaterialModal buttonText="Announcements" />
+                </div>
             </div>
             <ClassFeed classes={classes} />
         </div>
