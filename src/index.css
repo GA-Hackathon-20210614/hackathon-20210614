@@ -11,3 +11,39 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
 }
+.form-container {
+  max-width: 90vw;
+  padding: 2rem;
+  background-color: peachpuff;
+  border: 0.3vmin solid var(--bgc-05);
+  /* border-radius: 1rem; */
+}
+form {
+  display: grid;
+  max-width: 80vw;
+  grid-template-columns: 1fr 3fr;
+  gap: 0.5vmin;
+  color: var(--bgc-05);
+}
+label {
+  font-size: 1.3em;
+  font-weight: 600;
+  display: flex;
+  /* align-items: center;
+  justify-content: flex-end; */
+  margin: auto 0;
+}
+
+input,
+select {
+  background-color: transparent;
+  padding: 0.3em;
+  margin: 0.5em;
+  font-size: 1.5em;
+  font-family: 'Oswald', sans-serif;
+  border: 0.3vmin solid var(--bgc-05);
+  border-radius: 0.5vmin;
+  color: var(--bgc-05);
+  background-image: none !important; /* prevent lastpass */
+  outline: none;
+}
