@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './LoginForm.scss';
 import * as usersService from '../../utilities/users-service';
 import '../../pages/AuthPage/AuthPage.scss';
 import Button from '@material-ui/core/Button';
@@ -41,9 +42,9 @@ export default function LogIn({ setUser }) {
             Password
           </label>
             <input className="authFields" type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            <Button id="login" type="submit" variant="contained">LOG IN</Button>
         </form>
       </div>
-            <Button type="submit" variant="contained">LOG IN</Button>
       <p className="error-message">&nbsp;{error}</p>
     </div>
   );

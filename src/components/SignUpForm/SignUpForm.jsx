@@ -81,10 +81,8 @@ export default class SignUpForm extends Component {
             <strong>Are you a teacher?</strong>
             </label>
             <select name="teacher" id="teacher" onChange={this.handleChange} value={this.state.isTeaher}>
-              <option value={true}>Yes</option>
-
               <option value={false}>No</option>
-
+              <option value={true}>Yes</option>
             </select>
 
               {/* <label>
