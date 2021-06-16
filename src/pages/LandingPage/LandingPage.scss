@@ -103,6 +103,14 @@
 .heading {
   line-height: 50px;
   font-size: 64px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 50%;
+  // margin-top: 200px;
+  // margin: auto;
+  
 }
 
 #about {
@@ -126,6 +134,7 @@
   p {
     font-size: 36px;
     padding: 0px 50px 150px 50px;
+    max-width: 600px;
   }
 }
 
@@ -133,7 +142,8 @@
   font-size: 48px;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 5% auto;
+  
 }
 
 .parents {
