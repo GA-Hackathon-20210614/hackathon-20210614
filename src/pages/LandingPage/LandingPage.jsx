@@ -24,7 +24,7 @@ export default function LandingPage() {
           <Link to="#features" className="link"> Features </Link>
           </div>
           <div className="links">
-          <Link to="" className="link"> Login </Link>
+          <Link to="/login" className="link"> Login </Link>
           </div>
         </div>
       </header>
