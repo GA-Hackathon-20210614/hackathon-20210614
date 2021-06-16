@@ -30,7 +30,7 @@ async function create(req, res) {
     const currentUser = req.user; // grabbing current user
     const students = Student.find({}); // grabbing all students (optional depending on form)
 
-    const { subject, gradeLevel, period } = req.body;
+    const { subject, gradeLevel, period, time } = req.body;
 
     if (!currentUser.isTeacher) throw new Error("You are not a teachers");
 
@@ -39,6 +39,7 @@ async function create(req, res) {
       period,
       subject,
       teacher: currentUser,
+      time,
     });
 
     res.json({ success: true, createdClass });

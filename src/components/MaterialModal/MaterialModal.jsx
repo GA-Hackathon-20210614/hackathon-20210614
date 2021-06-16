@@ -62,7 +62,10 @@ export default function Material_Modal(props) {
         <Fade in={open}>
         {/* modal content */}
           <div className={classes.paper}>
-            <ClassForm />
+          {
+            buttonText ? 'Announcements' : <ClassForm handleCreateClass={props.handleClick} />
+          }
+            
             {/* <h2 id="transition-modal-title">Transition modal</h2>
 
             <p id="transition-modal-description">react-transition-group animates me.</p> */}
