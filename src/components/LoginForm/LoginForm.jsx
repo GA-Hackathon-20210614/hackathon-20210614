@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
+import '../../pages/AuthPage/AuthPage.scss';
+import Button from '@material-ui/core/Button';
 
 export default function LogIn({ setUser }) {
   const [credentials, setCredentials] = useState({
@@ -31,11 +33,15 @@ export default function LogIn({ setUser }) {
     <div>
       <div className="form-container" onSubmit={handleSubmit}>
         <form autoComplete="off" >
-          <label>Email</label>
-          <input type="text" name="email" value={credentials.email} onChange={handleChange} required />
-          <label>Password</label>
-          <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
-          <button type="submit">LOG IN</button>
+          <label>
+            Email
+             <input className="authFields" type="text" name="email" value={credentials.email} onChange={handleChange} required />
+            </label>
+          <label>
+            Password
+            <input type="password" name="password" value={credentials.password} onChange={handleChange} required />
+            </label>
+            <Button type="submit" variant="contained">LOG IN</Button>
         </form>
       </div>
       <p className="error-message">&nbsp;{error}</p>
