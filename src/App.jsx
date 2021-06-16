@@ -6,6 +6,7 @@ import AuthPage from './pages/AuthPage/AuthPage';
 import IndexPage from './pages/IndexPage/IndexPage';
 import DashboardPage from './pages/DashboardPage/DashboardPage';
 import LandingPage from './pages/LandingPage/LandingPage'
+import ClassPage from './pages/ClassPage/ClassPage'
 
 export default function App() {
   const [user, setUser] = useState(getUser());
@@ -19,12 +20,15 @@ export default function App() {
             <LandingPage />
             </Route>
             { user ?
-            <>
+              <Switch>
               <Route exact path="/dashboard">
                 <DashboardPage user={user} />
               </Route>
+              <Route exact path="/class/:id">
+                <ClassPage user={user} />
+              </Route>
               <Redirect to='/dashboard'/>
-              </>
+              </Switch>
               :
               <AuthPage setUser={setUser} />
             }
