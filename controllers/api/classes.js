@@ -53,13 +53,13 @@ async function findClass(req, res) {
 	try {
 		const currentUser = req.user; //grabbing current user
 
-    const targetClass = await Class.findOne({ _id });
+    const targetClass = await Class.findOne({ _id }).populate('students');
     console.log(targetClass)
     if (!targetClass) throw new Error("Class does not exist");
     
     // check if the teacher owns the class
     // disabled for testing rendering purposes
-    // if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
+    if (currentUser._id != targetClass.teacher) throw new Error("Forbidden");
 
     res.json({success: true, targetClass})
 	} catch {
