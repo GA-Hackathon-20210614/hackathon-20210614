@@ -1,1 +1,13 @@
 @import '../../styles/global';
+
+#add-class-btn {
+    width: 190px;
+    height: 218px;
+    border: 1px solid $dark-blue;
+    font-size: 64px;
+    color: $dark-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
